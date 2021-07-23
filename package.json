@@ -13,9 +13,9 @@
     "packages/*"
   ],
   "scripts": {
-    "format": "prettier --write .",
     "lint": "eslint .",
-    "test": "jest"
+    "test": "jest",
+    "ts": "tsc -b"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
