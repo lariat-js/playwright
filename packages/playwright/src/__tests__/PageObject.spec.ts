@@ -1,6 +1,6 @@
-import { PageObject } from '..'
+import { Collection } from '..'
 
-class TodoPage extends PageObject {
+class TodoPage extends Collection {
   item = this.el('data-testid=list-item')
 }
 

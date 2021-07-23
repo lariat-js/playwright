@@ -1,1 +1,1 @@
-export { PageObject } from './PageObject'
+export { Collection } from './Collection'

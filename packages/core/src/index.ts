@@ -1,1 +1,1 @@
-export type { Selector } from './Selector'
+export type { LariatElement } from './LariatElement'
