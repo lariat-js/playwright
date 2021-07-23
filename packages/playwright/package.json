@@ -1,6 +1,6 @@
 {
   "name": "@lariat/playwright",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Lariat for Playwright.",
   "author": "Widen",
   "license": "ISC",
@@ -26,7 +26,7 @@
     "lib"
   ],
   "dependencies": {
-    "@lariat/core": "^0.0.0",
+    "@lariat/core": "^0.0.1",
     "playwright-core": "^1.13.0"
   }
 }
