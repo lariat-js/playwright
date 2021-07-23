@@ -1,0 +1,20 @@
+name: Format
+on:
+  pull_request:
+    branches: [main]
+if: github.repository == 'Widen/npm-package-template'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+      - run: yarn install --immutable
+      - run: yarn prettier --write .
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply formatting changes
+          branch: ${{ github.head_ref }}
