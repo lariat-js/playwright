@@ -4,28 +4,21 @@
   "description": "Page object framework for end-to-end testing in Playwright.",
   "author": "Widen",
   "license": "ISC",
-  "repository": "github:Widen/lariat",
-  "homepage": "https://github.com/Widen/lariat#readme",
-  "bugs": {
-    "url": "https://github.com/Widen/lariat/issues"
+  "repository": {
+    "directory": ".",
+    "type": "git",
+    "url": "https://github.com/Widen/lariat"
   },
-  "keywords": [],
-  "exports": "./lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "src",
-    "lib"
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
+    "format": "prettier --write .",
     "lint": "eslint .",
     "test": "jest"
   },
-  "release": {
-    "branches": [
-      "main"
-    ]
-  },
   "devDependencies": {
+    "@changesets/cli": "^2.16.0",
     "@types/jest": "^26.0.22",
     "@typescript-eslint/eslint-plugin": "^4.19.0",
     "@typescript-eslint/parser": "^4.19.0",
