@@ -15,7 +15,8 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "ts": "tsc -b"
+    "ts": "tsc -b",
+    "release": "./scripts/release.sh"
   },
   "devDependencies": {
     "@changesets/cli": "^2.16.0",
