@@ -19,6 +19,9 @@
     "release": "./scripts/release.sh"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-typescript": "^7.14.5",
     "@changesets/cli": "^2.16.0",
     "@types/jest": "^26.0.24",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
@@ -26,7 +29,6 @@
     "eslint": "^7.31.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
-    "ts-jest": "^27.0.4",
     "typescript": "^4.3.5"
   }
 }
