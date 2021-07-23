@@ -2,7 +2,7 @@ name: Format
 on:
   pull_request:
     branches: [main]
-if: github.repository == 'Widen/npm-package-template'
+if: github.repository == 'Widen/lariat'
 jobs:
   test:
     runs-on: ubuntu-latest

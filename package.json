@@ -1,13 +1,13 @@
 {
-  "name": "npm-package-template",
-  "version": "0.0.0-semantically-released",
-  "description": "{{description}}",
+  "name": "lariat",
+  "private": true,
+  "description": "Page object framework for end-to-end testing in Playwright.",
   "author": "Widen",
   "license": "ISC",
-  "repository": "github:Widen/npm-package-template",
-  "homepage": "https://github.com/Widen/npm-package-template#readme",
+  "repository": "github:Widen/lariat",
+  "homepage": "https://github.com/Widen/lariat#readme",
   "bugs": {
-    "url": "https://github.com/Widen/npm-package-template/issues"
+    "url": "https://github.com/Widen/lariat/issues"
   },
   "keywords": [],
   "exports": "./lib/index.js",
@@ -18,8 +18,7 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
-    "release": "semantic-release"
+    "test": "jest"
   },
   "release": {
     "branches": [
@@ -33,7 +32,6 @@
     "eslint": "^7.22.0",
     "jest": "^26.6.3",
     "prettier": "^2.2.1",
-    "semantic-release": "^17.4.2",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3"
   }

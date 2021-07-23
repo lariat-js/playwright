@@ -28,7 +28,3 @@ jobs:
           node-version: 14.x
       - run: yarn install --immutable
       - run: yarn tsc
-      - run: yarn semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
