@@ -1,10 +1,10 @@
-import type { LariatElement } from '@lariat/core'
-import { ElementHandle, Page } from 'playwright-core'
+import { Page } from 'playwright-core'
+import { LariatElement } from './types'
 
 export class Collection {
   constructor(private page: Page) {}
 
-  protected el(selector: string): LariatElement<ElementHandle> {
+  protected el(selector: string): LariatElement {
     const element = () => this.page.waitForSelector(selector)
     element.$ = selector
     return element
