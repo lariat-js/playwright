@@ -1,0 +1,27 @@
+{
+  "name": "@lariat/core",
+  "version": "0.0.0",
+  "description": "Framework agnostic version of Lariat.",
+  "author": "Widen",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Widen/lariat",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/Widen/lariat/blob/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/Widen/lariat/issues"
+  },
+  "keywords": [
+    "lariat",
+    "page-object-model",
+    "end-to-end-testing"
+  ],
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "src",
+    "lib"
+  ]
+}
