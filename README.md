@@ -17,7 +17,7 @@ While the remainder of the docs reference `@lariat/playwright`, you can swap `@l
 - Puppeteer - Coming soon!
 - Cypress - Coming soon!
 
-## Usage
+## Basic Usage
 
 At the core of Lariat is the `Collection` class. This class is used to represent a collection of elements in a page or section of a page and can include associated utility methods for interacting with those elements.
 
@@ -41,7 +41,7 @@ test('create a todo', async () => {
 })
 ```
 
-### Elements
+## Elements
 
 Elements are defined in collections using the `Collection.el()` method.
 
@@ -74,7 +74,7 @@ await todoPage.saveButton.click()
 await page.waitForSelector(todoPage.saveButton.$, { state: 'hidden' })
 ```
 
-#### Dynamic selectors
+### Dynamic selectors
 
 . Consider a todo list where we find an item based on it's name. Our collection might look something like this:
 
@@ -94,7 +94,7 @@ const item = await todoPage.item('Finish the website')
 const item = await todoPage.item.$('Finish the website')
 ```
 
-### Utility methods
+## Utility methods
 
 Because collections are plain JavaScript classes, you can easily add utility methods to your collections.
 
@@ -113,7 +113,7 @@ const todoPage = new TodoPage(page)
 await todoPage.create('Finish the website')
 ```
 
-### Specifying a collection root
+## Specifying a collection root
 
 When defining element collections, you may find yourself prefixing each element's selector with a common ancestor. This can be required when you are targeting elements from a component library where there may not be an attribute that uniquely identifies each element.
 
@@ -157,7 +157,7 @@ class TextField extends Collection {
 new TextField(page, '#my-text-field')
 ```
 
-### Nested collections
+## Nested collections
 
 So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout with multi-level selector chaining where necessary.
 
@@ -180,7 +180,7 @@ class TodoPage extends Collection {
 }
 ```
 
-#### Nested selector chaining
+### Nested selector chaining
 
 By default, `Collection.nest()` will look for a `root` property on the parent collection and if it exists, it will chain that selector with the elements in the child collection. For example,
 
@@ -208,7 +208,7 @@ const todoPage = new TodoPage(page)
 console.log(todoPage.field.input.$) // #todo-field >> .text-field-input
 ```
 
-#### Advanced nesting
+### Advanced nesting
 
 In some cases, you may need to customize your
 
