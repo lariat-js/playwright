@@ -21,7 +21,7 @@ While the remainder of the docs reference `@lariat/playwright`, you can swap `@l
 
 At the core of Lariat is the `Collection` class. This class is used to represent a collection of elements in a page or section of a page and can include associated utility methods for interacting with those elements.
 
-To create your own collections, simply create a class which extends the `Collection` class from Lariat. You can then define elements using the `Collection.el()` method which we will explore more in a moment.
+To create your own collections, simply create a class which extends the `Collection` class. You can then define elements using the `Collection.el()` method which we will explore more in a moment.
 
 ```ts
 import { Collection } from '@lariat/playwright'
@@ -76,11 +76,11 @@ await page.waitForSelector(todoPage.saveButton.$, { state: 'hidden' })
 
 #### Dynamic selectors
 
-Because collections in Lariat are plain JavaScript classes, you can easily create elements with dynamic selectors. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
+. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
 
 ```ts
 class TodoPage extends Collection {
-  item = (name: string) => this.el(`#todo-item[data-name="${name}"]`)
+  item = this.el((name: string) => `#todo-item[data-name="${name}"]`)
 }
 
 const todoPage = new TodoPage(page)
@@ -96,7 +96,7 @@ const item = await todoPage.item.$('Finish the website')
 
 ### Utility methods
 
-Because collections in Lariat are plain JavaScript classes, you can easily add utility methods to your collections.
+Because collections are plain JavaScript classes, you can easily add utility methods to your collections.
 
 ```ts
 class TodoPage extends Collection {
@@ -136,7 +136,7 @@ class TextField extends Collection {
 }
 ```
 
-By adding the `root` property, Lariat will automatically prefix the selectors for all elements in the collection. Not only that, but you can still use the `root` property like any other element!
+By adding the `root` property, Lariat will automatically chain the selectors for all elements in the collection. Not only that, but you can still use the `root` property like any other element!
 
 ```ts
 const textField = new TextField(page)
@@ -159,8 +159,65 @@ new TextField(page, '#my-text-field')
 
 ### Nested collections
 
-TODO: Documentation coming soon
+So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout with multi-level selector chaining where necessary.
 
-#### Can I escape nesting?
+To nest a collection, use the `Collection.nest()` method and pass the nested collection class as the argument.
 
-TODO: Documentation coming soon
+```ts
+class TodoPage extends Collection {
+  field = this.nest(TextField)
+}
+
+const todoPage = new TodoPage(page)
+const input = await todoPage.field.input()
+```
+
+The `Collection.nest()` method will instantiate the nested collection for you, so if you need to pass a `root` property to the nested collection, simply add it as the second argument to `Collection.nest()`.
+
+```ts
+class TodoPage extends Collection {
+  field = this.nest(TextField, '#todo-field')
+}
+```
+
+#### Nested selector chaining
+
+By default, `Collection.nest()` will look for a `root` property on the parent collection and if it exists, it will chain that selector with the elements in the child collection. For example,
+
+```ts
+class TodoPage extends Collection {
+  root = this.el('#todo-page')
+  field = this.nest(TextField, '#todo-field')
+}
+
+const todoPage = new TodoPage(page)
+console.log(todoPage.field.input.$) // #todo-page >> #todo-field >> .text-field-input
+```
+
+_Note: Selector chaining is framework dependent. The Playwright package will use Playwright's chaining syntax (`>>`) to allow mixing selector engines. This technique is not used in the packages for other frameworks._
+
+You can opt-out of selector chaining by passing an options argument to `Collection.nest()`.
+
+```ts
+class TodoPage extends Collection {
+  root = this.el('#todo-page')
+  field = this.nest(TextField, '#todo-field', { chain: false })
+}
+
+const todoPage = new TodoPage(page)
+console.log(todoPage.field.input.$) // #todo-field >> .text-field-input
+```
+
+#### Advanced nesting
+
+In some cases, you may need to customize your
+
+```ts
+class TodoPage extends Collection {
+  root = this.el('#todo-page')
+  field = this.nest((page) => new TextField(page))
+}
+
+const todoPage = new TodoPage(page)
+console.log(todoPage.field.input.$) // #todo-field >> .text-field-input
+```
