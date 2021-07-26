@@ -76,22 +76,15 @@ await page.waitForSelector(todoPage.saveButton.$, { state: 'hidden' })
 
 ### Dynamic selectors
 
-. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
+Because collections in Lariat are plain JavaScript classes, you can easily create elements with dynamic selectors. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
 
 ```ts
 class TodoPage extends Collection {
-  item = this.el((name: string) => `#todo-item[data-name="${name}"]`)
+  item = (name: string) => this.el(`#todo-item[data-name="${name}"]`)
 }
 
 const todoPage = new TodoPage(page)
 const item = await todoPage.item('Finish the website')()
-```
-
-TODO: Figure out how to remove the currying
-
-```ts
-const item = await todoPage.item('Finish the website')
-const item = await todoPage.item.$('Finish the website')
 ```
 
 ## Utility methods
@@ -202,20 +195,6 @@ You can opt-out of selector chaining by passing an options argument to `Collecti
 class TodoPage extends Collection {
   root = this.el('#todo-page')
   field = this.nest(TextField, '#todo-field', { chain: false })
-}
-
-const todoPage = new TodoPage(page)
-console.log(todoPage.field.input.$) // #todo-field >> .text-field-input
-```
-
-### Advanced nesting
-
-In some cases, you may need to customize your
-
-```ts
-class TodoPage extends Collection {
-  root = this.el('#todo-page')
-  field = this.nest((page) => new TextField(page))
 }
 
 const todoPage = new TodoPage(page)
