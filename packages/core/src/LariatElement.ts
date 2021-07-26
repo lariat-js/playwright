@@ -1,4 +1,4 @@
-export interface LariatElement<T> {
+export type LariatElement<T> = T & {
   (): Promise<T>
   $: string
 }
