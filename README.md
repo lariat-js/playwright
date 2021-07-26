@@ -152,7 +152,7 @@ new TextField(page, '#my-text-field')
 
 ## Nested collections
 
-So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout with multi-level selector chaining where necessary.
+So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout with multi-level selector chaining.
 
 To nest a collection, use the `Collection.nest()` method and pass the nested collection class as the argument.
 
