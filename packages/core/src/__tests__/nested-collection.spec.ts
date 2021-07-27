@@ -1,39 +1,60 @@
 import { TestCollection } from './TestCollection'
 
 class Child extends TestCollection {
-  input = this.el('.text-field-input')
-}
-
-class RootedChild extends Child {
-  root = this.el('#child-root')
-}
-
-class Parent extends TestCollection {
-  child = this.nest(Child)
-  rootedChild = this.nest(RootedChild)
-  parent = this.el('.parent')
-}
-
-class RootedParent extends Parent {
-  root = this.el('#parent-root')
+  input = this.el('.input')
 }
 
 describe('Nested collection', () => {
-  it('should prefix selectors when the root property is set', async () => {
-    const textField = new CHild()
-    expect(textField.root.$).toBe('#my-root')
-    expect(textField.input.$).toBe('#my-root .my-text-field')
+  describe('when the parent does not have a root', () => {
+    it('should not chain selectors', () => {
+      class Parent extends TestCollection {
+        child = this.nest(Child)
+      }
+
+      const parent = new Parent()
+      expect(parent.child.input.$).toBe('.input')
+    })
+
+    it('should chain selectors with the root when passed', () => {
+      class Parent extends TestCollection {
+        child = this.nest(Child, '#root')
+      }
+
+      const parent = new Parent()
+      expect(parent.child.root.$).toBe('#root')
+      expect(parent.child.input.$).toBe('#root .input')
+    })
   })
 
-  it('should override the root property when passing a root in the constructor', () => {
-    const textField = new RootTextField('#new-root')
-    expect(textField.root.$).toBe('#new-root')
-    expect(textField.input.$).toBe('#new-root .my-text-field')
-  })
+  describe('when the parent has a root', () => {
+    it('should chain selectors with the root', () => {
+      class Parent extends TestCollection {
+        root = this.el('#parent')
+        child1 = this.nest(Child)
+        child2 = this.nest(Child, '#child')
+      }
+      const parent = new Parent()
 
-  it('should use the root from the constructor when the root property is not set', () => {
-    const textField = new TextField('#root')
-    expect(textField.root.$).toBe('#root')
-    expect(textField.input.$).toBe('#root .my-text-field')
+      expect(parent.child1.root).toBeUndefined()
+      expect(parent.child1.input.$).toBe('#parent .input')
+
+      expect(parent.child2.root.$).toBe('#parent #child')
+      expect(parent.child2.input.$).toBe('#parent #child .input')
+    })
+
+    it('can opt-out of chaining', () => {
+      class Parent extends TestCollection {
+        root = this.el('#parent')
+        child1 = this.nest(Child, { chain: false })
+        child2 = this.nest(Child, '#child', { chain: false })
+      }
+      const parent = new Parent()
+
+      expect(parent.child1.root).toBeUndefined()
+      expect(parent.child1.input.$).toBe('#child')
+
+      expect(parent.child2.root.$).toBe('#child')
+      expect(parent.child2.input.$).toBe('#child .input')
+    })
   })
 })
