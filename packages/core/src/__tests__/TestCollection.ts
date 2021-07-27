@@ -1,11 +1,18 @@
 import { Collection } from '..'
 
 const element = {
+  click: async () => {},
   isDisabled: async () => true,
 }
 
-export class TestCollection extends Collection<typeof element> {
-  constructor() {
-    super(() => Promise.resolve(element))
+type ElementType = typeof element
+
+export class TestCollection extends Collection<ElementType> {
+  constructor(_root?: string) {
+    super(_root)
+  }
+
+  protected _resolve() {
+    return Promise.resolve(element)
   }
 }
