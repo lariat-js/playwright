@@ -1,4 +1,13 @@
 {
-  "files": [],
-  "references": [{ "path": "packages/core" }, { "path": "packages/playwright" }]
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "lib"
+  }
 }

@@ -1,22 +1,35 @@
 {
   "name": "lariat",
-  "private": true,
+  "version": "0.0.1",
   "description": "Page object framework for end-to-end testing in Playwright.",
   "author": "Widen",
   "license": "ISC",
-  "repository": {
-    "directory": ".",
-    "type": "git",
-    "url": "https://github.com/Widen/lariat"
+  "repository": "github:Widen/lariat",
+  "homepage": "https://github.com/Widen/lariat#readme",
+  "bugs": {
+    "url": "https://github.com/Widen/lariat/issues"
   },
-  "workspaces": [
-    "packages/*"
+  "keywords": [
+    "lariat",
+    "page-object-model",
+    "end-to-end-testing",
+    "playwright",
+    "playwright-test"
+  ],
+  "exports": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "src",
+    "lib"
   ],
   "scripts": {
     "lint": "eslint .",
     "test": "jest",
-    "ts": "tsc -b",
+    "ts": "tsc",
     "release": "./scripts/release.sh"
+  },
+  "dependencies": {
+    "playwright-core": "^1.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
