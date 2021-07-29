@@ -21,7 +21,8 @@ describe('Nested collection', () => {
       }
 
       const parent = new Parent()
-      expect(parent.child.root.$).toBe('#root')
+      // TODO: undefined
+      expect(parent.child.root?.$).toBe('#root')
       expect(parent.child.input.$).toBe('#root .input')
     })
   })
@@ -38,7 +39,8 @@ describe('Nested collection', () => {
       expect(parent.child1.root).toBeUndefined()
       expect(parent.child1.input.$).toBe('#parent .input')
 
-      expect(parent.child2.root.$).toBe('#parent #child')
+      // TODO: undefined
+      expect(parent.child2.root?.$).toBe('#parent #child')
       expect(parent.child2.input.$).toBe('#parent #child .input')
     })
 
@@ -53,7 +55,8 @@ describe('Nested collection', () => {
       expect(parent.child1.root).toBeUndefined()
       expect(parent.child1.input.$).toBe('#child')
 
-      expect(parent.child2.root.$).toBe('#child')
+      // TODO: undefined
+      expect(parent.child2.root?.$).toBe('#child')
       expect(parent.child2.input.$).toBe('#child .input')
     })
   })

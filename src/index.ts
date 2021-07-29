@@ -1,2 +1,2 @@
 export { Collection } from './Collection'
-export type { LariatElement } from './LariatElement'
+export type { LariatElement } from './types'

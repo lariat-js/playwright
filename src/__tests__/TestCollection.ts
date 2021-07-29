@@ -1,18 +1,13 @@
+import { Locator } from 'playwright-core'
 import { Collection } from '..'
 
-const element = {
+const locator = {
   click: async () => {},
   isDisabled: async () => true,
-}
+} as Locator
 
-type ElementType = typeof element
-
-export class TestCollection extends Collection<ElementType> {
-  constructor(_root?: string) {
-    super(_root)
-  }
-
-  protected _resolve() {
-    return Promise.resolve(element)
+export class TestCollection extends Collection {
+  constructor(root?: string) {
+    super(locator, root)
   }
 }

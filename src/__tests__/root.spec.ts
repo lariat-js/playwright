@@ -24,7 +24,8 @@ describe('Root element', () => {
 
   it('should use the root from the constructor when the root property is not set', () => {
     const textField = new TextField('#root')
-    expect(textField.root.$).toBe('#root')
+    // TODO: undefined
+    expect(textField.root?.$).toBe('#root')
     expect(textField.input.$).toBe('#root .my-text-field')
   })
 })

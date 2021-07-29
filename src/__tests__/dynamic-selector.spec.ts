@@ -10,7 +10,6 @@ describe('Dynamic selectors', () => {
     const item = todoPage.item('Finish the website')
 
     expect(item.$).toBe('#todo-item[data-name="Finish the website"]')
-    expect(await (await item()).isDisabled()).toBe(true)
     expect(await item.isDisabled()).toBe(true)
   })
 

@@ -5325,7 +5325,7 @@ fsevents@^2.3.2:
     "@typescript-eslint/parser": ^4.28.4
     eslint: ^7.31.0
     jest: ^27.0.6
-    playwright-core: ^1.13.0
+    playwright-core: 1.14.0-next-1627569199000
     prettier: ^2.3.2
     typescript: ^4.3.5
   languageName: unknown
@@ -6067,9 +6067,9 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:^1.13.0":
-  version: 1.13.0
-  resolution: "playwright-core@npm:1.13.0"
+"playwright-core@npm:1.14.0-next-1627569199000":
+  version: 1.14.0-next-1627569199000
+  resolution: "playwright-core@npm:1.14.0-next-1627569199000"
   dependencies:
     commander: ^6.1.0
     debug: ^4.1.1
@@ -6087,7 +6087,7 @@ fsevents@^2.3.2:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: ccad588c53ccf2b7949334f4edb78af1f5805eca53f4080052b491a6cb355e03eec08e38ff14d8cc52ce0e401daa3c0b80318e8f366809907d92cf4a7be2e237
+  checksum: f2a8143de18aa346d23ac1c76c49ea9adf1abde8d0ff6368f1f71a9bae9077b77f80a6c458f68e19499f10e8a6bd150f695c7d4fcef2d9ff06c04bfab8a6be5f
   languageName: node
   linkType: hard
 

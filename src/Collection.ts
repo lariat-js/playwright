@@ -1,50 +1,33 @@
-import { LariatElement } from './LariatElement'
+import { Handle, LariatElement, NestOptions, NewableCollection } from './types'
 
-export interface NestOptions {
-  chain?: boolean
-}
-
-type NewableCollection<T, U> = new (
-  root?: string,
-  context?: LariatElement<T>
-) => U
-
-export class Collection<T> {
-  public root: LariatElement<T> | undefined
-
+export class Collection {
+  public root: LariatElement | undefined
   private context: string | undefined
-  private async resolve(selector: string) {
-    return ''
-  }
 
-  constructor(root?: string) {
+  constructor(private handle: Handle, root?: string) {
     this.root = root ? this.el(root) : undefined
   }
 
-  protected chain(selectors: string[]) {
-    return selectors.join(' >> ')
-  }
-
-  protected el(selector: string): LariatElement<T> {
-    const element = () => this.resolve(selector)
+  protected el(selector: string): LariatElement {
+    const element = this.handle.locator(selector) as LariatElement
     element.$ = selector
-    return element as LariatElement<T>
+    return element
   }
 
-  protected nest<U extends Collection<T>>(
-    collection: NewableCollection<T, U>,
+  protected nest<T extends Collection>(
+    collection: NewableCollection<T>,
     options?: NestOptions
-  ): U
-  protected nest<U extends Collection<T>>(
-    collection: NewableCollection<T, U>,
+  ): T
+  protected nest<T extends Collection>(
+    collection: NewableCollection<T>,
     root: string,
     options?: NestOptions
-  ): U
-  protected nest<U extends Collection<T>>(
-    collection: NewableCollection<T, U>,
+  ): T
+  protected nest<T extends Collection>(
+    collection: NewableCollection<T>,
     rootOrOptions?: string | NestOptions,
     options?: NestOptions
-  ): U {
+  ): T {
     const [root, opts] =
       typeof rootOrOptions === 'string'
         ? [rootOrOptions, options]
@@ -53,5 +36,9 @@ export class Collection<T> {
     return opts?.chain !== false
       ? new collection(root, this.root)
       : new collection(root)
+  }
+
+  private chain(selectors: string[]) {
+    return selectors.join(' >> ')
   }
 }
