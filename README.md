@@ -6,16 +6,9 @@ Page object framework for end-to-end testing in Playwright.
 
 ## Installation
 
-Lariat comes in a number of variants based on the browser automation framework you are using. For example, to install the Playwright version of Lariat, you can run:
-
 ```sh
-npm install @lariat/playwright
+npm install lariat
 ```
-
-While the remainder of the docs reference `@lariat/playwright`, you can swap `@lariat/playwright` with any of the variants listed below:
-
-- Puppeteer - Coming soon!
-- Cypress - Coming soon!
 
 ## Basic Usage
 
@@ -24,7 +17,7 @@ At the core of Lariat is the `Collection` class. This class is used to represent
 To create your own collections, simply create a class which extends the `Collection` class. You can then define elements using the `Collection.el()` method which we will explore more in a moment.
 
 ```ts
-import { Collection } from '@lariat/playwright'
+import { Collection } from 'lariat'
 
 class TodoPage extends Collection {
   input = this.el('#todo-input')
@@ -137,8 +130,6 @@ console.log(textField.root.$) // #my-text-field
 console.log(textField.input.$) // #my-text-field >> .text-field-input
 ```
 
-_Note: Selector chaining is framework dependent. The Playwright package will use Playwright's chaining syntax (`>>`) to allow mixing selector engines. This technique is not used in the packages for other frameworks._
-
 While this works well in many cases, your may want your collection to be generic where the `root` can be specified during instantiation. Good news, just pass a second argument with the value for `root` when instantiating your collection and you are good to go!
 
 ```ts
@@ -186,8 +177,6 @@ class TodoPage extends Collection {
 const todoPage = new TodoPage(page)
 console.log(todoPage.field.input.$) // #todo-page >> #todo-field >> .text-field-input
 ```
-
-_Note: Selector chaining is framework dependent. The Playwright package will use Playwright's chaining syntax (`>>`) to allow mixing selector engines. This technique is not used in the packages for other frameworks._
 
 You can opt-out of selector chaining by passing an options argument to `Collection.nest()`.
 
