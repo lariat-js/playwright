@@ -1,4 +1,9 @@
-import { Handle, LariatElement, NestOptions, NewableCollection } from './types'
+import type {
+  Handle,
+  LariatElement,
+  NestOptions,
+  NewableCollection,
+} from './types'
 
 export class Collection {
   public root: LariatElement | undefined
