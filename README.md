@@ -1,6 +1,8 @@
 # Lariat
 
 [![Build](https://github.com/Widen/lariat/actions/workflows/build.yml/badge.svg)](https://github.com/Widen/lariat/actions/workflows/build.yml)
+[![npm](https://img.shields.io/npm/v/lariat)](https://www.npmjs.com/package/lariat)
+[![changesets](https://img.shields.io/badge/maintained%20with-changesets-blue)](https://github.com/atlassian/changesets)
 
 Page object framework for end-to-end testing in Playwright.
 
