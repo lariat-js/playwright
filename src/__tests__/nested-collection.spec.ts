@@ -23,12 +23,12 @@ describe('Nested collection', () => {
       const parent = new Parent()
       // TODO: undefined
       expect(parent.child.root?.$).toBe('#root')
-      expect(parent.child.input.$).toBe('#root .input')
+      expect(parent.child.input.$).toBe('#root >> .input')
     })
   })
 
   describe('when the parent has a root', () => {
-    it('should chain selectors with the root', () => {
+    it.only('should chain selectors with the root', () => {
       class Parent extends TestCollection {
         root = this.el('#parent')
         child1 = this.nest(Child)
@@ -37,11 +37,11 @@ describe('Nested collection', () => {
       const parent = new Parent()
 
       expect(parent.child1.root).toBeUndefined()
-      expect(parent.child1.input.$).toBe('#parent .input')
+      expect(parent.child1.input.$).toBe('#parent >> .input')
 
       // TODO: undefined
-      expect(parent.child2.root?.$).toBe('#parent #child')
-      expect(parent.child2.input.$).toBe('#parent #child .input')
+      expect(parent.child2.root?.$).toBe('#parent >> #child')
+      expect(parent.child2.input.$).toBe('#parent >> #child >> .input')
     })
 
     it('can opt-out of chaining', () => {
@@ -53,11 +53,11 @@ describe('Nested collection', () => {
       const parent = new Parent()
 
       expect(parent.child1.root).toBeUndefined()
-      expect(parent.child1.input.$).toBe('#child')
+      expect(parent.child1.input.$).toBe('.input')
 
       // TODO: undefined
       expect(parent.child2.root?.$).toBe('#child')
-      expect(parent.child2.input.$).toBe('#child .input')
+      expect(parent.child2.input.$).toBe('#child >> .input')
     })
   })
 })
