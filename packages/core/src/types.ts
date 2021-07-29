@@ -1,4 +1,4 @@
-import { LariatElement } from './LariatElement'
+import { Collection, LariatElement, LariatElement } from '.'
 
 export interface NestOptions {
   chain?: boolean
@@ -9,9 +9,7 @@ type NewableCollection<T, U> = new (
   context?: LariatElement<T>
 ) => U
 
-export abstract class Collection<T> {
-  public root: LariatElement<T> | undefined
-
+export interface BaseCollection<T> {
   protected _context: string | undefined
   protected abstract _resolve(selector: string): Promise<T>
 
@@ -23,7 +21,7 @@ export abstract class Collection<T> {
     return selectors.join(' ')
   }
 
-  protected el(selector: string): LariatElement<T> {
+  protected el(): LariatElement<T> {
     const element = () => this._resolve(selector)
     element.$ = selector
     return element as LariatElement<T>
@@ -52,4 +50,8 @@ export abstract class Collection<T> {
       ? new collection(root, this.root)
       : new collection(root)
   }
+}
+
+export interface RootCollection {
+
 }
