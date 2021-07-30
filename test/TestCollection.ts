@@ -1,5 +1,5 @@
 import { Locator, Page } from 'playwright-core'
-import { Collection } from '..'
+import { Collection } from '../src'
 
 const locator = {
   click: async () => {},
