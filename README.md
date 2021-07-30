@@ -99,3 +99,11 @@ class TodoPage extends Collection {
 const todoPage = new TodoPage(page)
 await todoPage.field.input.fill('Finish the website')
 ```
+
+If your nested collection is used merely to group a set of related elements together, you can use the parent's `root` property as the root of the child collection.
+
+```ts
+class TodoPage extends Collection {
+  field = this.nest(TextField, this.root)
+}
+```

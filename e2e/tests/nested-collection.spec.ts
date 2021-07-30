@@ -14,7 +14,22 @@ test.describe('Nested collection', () => {
     await page.setContent(
       '<input id="outer"><div id="child"><input id="inner"></div>'
     )
+
     const parent = new Parent(page)
     await expect(parent.child.input).toHaveId('inner')
+    await expect(parent.child.input).toHaveCount(1)
+  })
+
+  test('can use the parent root in the child', async ({ page }) => {
+    class Parent extends Collection {
+      child = this.nest(Child, this.root)
+    }
+
+    await page.setContent(
+      '<input id="outer"><div id="child"><input id="inner"></div>'
+    )
+
+    const parent = new Parent(page)
+    await expect(parent.child.input).toHaveCount(2)
   })
 })
