@@ -15,6 +15,6 @@ test.describe('Nested collection', () => {
       '<input id="outer"><div id="child"><input id="inner"></div>'
     )
     const parent = new Parent(page)
-    expect(parent.child.input).toHaveId('inner')
+    await expect(parent.child.input).toHaveId('inner')
   })
 })

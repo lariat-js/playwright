@@ -85,93 +85,17 @@ const todoPage = new TodoPage(page)
 await todoPage.create('Finish the website')
 ```
 
-## Specifying a collection root
-
-When defining element collections, you may find yourself prefixing each element's selector with a common ancestor. This can be required when you are targeting elements from a component library where there may not be an attribute that uniquely identifies each element.
-
-For example, consider a `TextField` collection which contains an `input` and `error` element.
-
-```ts
-class TextField extends Collection {
-  input = this.el('#my-text-field .text-field-input')
-  error = this.el('#my-text-field .text-field-error')
-}
-```
-
-As you can see, we are forced to prefix both elements with `#my-text-field` to fully qualify the selectors. However, Lariat provides a better way!
-
-```ts
-class TextField extends Collection {
-  root = this.el('#my-text-field')
-  input = this.el('.text-field-input')
-  error = this.el('.text-field-error')
-}
-```
-
-By adding the `root` property, Lariat will automatically chain the selectors for all elements in the collection. Not only that, but you can still use the `root` property like any other element!
-
-```ts
-const textField = new TextField(page)
-console.log(textField.root.$) // #my-text-field
-console.log(textField.input.$) // #my-text-field >> .text-field-input
-```
-
-While this works well in many cases, your may want your collection to be generic where the `root` can be specified during instantiation. Good news, just pass a second argument with the value for `root` when instantiating your collection and you are good to go!
-
-```ts
-class TextField extends Collection {
-  input = this.el('.text-field-input')
-  error = this.el('.text-field-error')
-}
-
-new TextField(page, '#my-text-field')
-```
-
 ## Nested collections
 
-So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout with multi-level selector chaining.
+So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout.
 
-To nest a collection, use the `Collection.nest()` method and pass the nested collection class as the argument.
-
-```ts
-class TodoPage extends Collection {
-  field = this.nest(TextField)
-}
-
-const todoPage = new TodoPage(page)
-const input = await todoPage.field.input()
-```
-
-The `Collection.nest()` method will instantiate the nested collection for you, so if you need to pass a `root` property to the nested collection, simply add it as the second argument to `Collection.nest()`.
+To nest a collection, use the `Collection.nest()` method and pass the nested collection class and the root of the nested collection.
 
 ```ts
 class TodoPage extends Collection {
   field = this.nest(TextField, '#todo-field')
 }
-```
-
-### Nested selector chaining
-
-By default, `Collection.nest()` will look for a `root` property on the parent collection and if it exists, it will chain that selector with the elements in the child collection. For example,
-
-```ts
-class TodoPage extends Collection {
-  root = this.el('#todo-page')
-  field = this.nest(TextField, '#todo-field')
-}
 
 const todoPage = new TodoPage(page)
-console.log(todoPage.field.input.$) // #todo-page >> #todo-field >> .text-field-input
-```
-
-You can opt-out of selector chaining by passing an options argument to `Collection.nest()`.
-
-```ts
-class TodoPage extends Collection {
-  root = this.el('#todo-page')
-  field = this.nest(TextField, '#todo-field', { chain: false })
-}
-
-const todoPage = new TodoPage(page)
-console.log(todoPage.field.input.$) // #todo-field >> .text-field-input
+await todoPage.field.input.fill('Finish the website')
 ```
