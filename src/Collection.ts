@@ -9,8 +9,8 @@ export class Collection {
 
   protected nest<T extends Collection>(
     collection: NewableCollection<T>,
-    root: Handle
+    root: string
   ) {
-    return new collection(root)
+    return new collection(this.el(root))
   }
 }
