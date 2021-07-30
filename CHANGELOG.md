@@ -1,5 +1,11 @@
 # lariat
 
+## 0.0.5
+
+### Patch Changes
+
+- 0053132: Export `Locator` type from Playwright to fix inferred type errors.
+
 ## 0.0.4
 
 ### Patch Changes
