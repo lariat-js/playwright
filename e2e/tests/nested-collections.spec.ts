@@ -33,8 +33,13 @@ test.describe('Nested collections', () => {
     await expect(parent.child.input).toHaveCount(2)
   })
 
-  test('can escape nesting', async ({ page }) => {
-    await page.setContent('<div id="content"></div><p id="modal">Hi</p>')
-    console.log()
+  test('can escape nesting using the page root', async ({ page }) => {
+    class Parent extends Collection {
+      child = this.nest(Child, this.pageRoot)
+    }
+
+    await page.setContent('<div id="content"></div><input id="hi">')
+    const modalPage = new Parent(page)
+    await expect(modalPage.child.input).toHaveId('hi')
   })
 })
