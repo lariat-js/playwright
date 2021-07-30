@@ -1,5 +1,12 @@
 # lariat
 
+## 0.0.4
+
+### Patch Changes
+
+- e68c5a7: Export more types from the package to fix portability error.
+- e68c5a7: Add `portal` option for nested selectors. Subject to change.
+
 ## 0.0.3
 
 ### Patch Changes
