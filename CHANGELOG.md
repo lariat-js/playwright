@@ -1,5 +1,11 @@
 # lariat
 
+## 0.0.7
+
+### Patch Changes
+
+- 9b43893: Add better documentation for `Collection.el()` and `Collection.nest()`
+
 ## 0.0.6
 
 ### Patch Changes
