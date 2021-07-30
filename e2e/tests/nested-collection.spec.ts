@@ -11,8 +11,10 @@ test.describe('Nested collection', () => {
       child = this.nest(Child, '#child')
     }
 
-    await page.setContent('<input><div id="child"><input></div>')
+    await page.setContent(
+      '<input id="outer"><div id="child"><input id="inner"></div>'
+    )
     const parent = new Parent(page)
-    expect(parent.child.input).toBe('input')
+    expect(parent.child.input).toHaveId('inner')
   })
 })

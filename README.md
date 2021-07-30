@@ -31,8 +31,7 @@ With your collection defined, you can instantiate it in your test to access the 
 ```ts
 test('create a todo', async () => {
   const todoPage = new TodoPage(page)
-  const input = await todoPage.input()
-  await input.fill('Finish the website')
+  await todoPage.input.fill('Finish the website')
 })
 ```
 
@@ -46,27 +45,11 @@ class TodoPage extends Collection {
 }
 ```
 
-Elements can be used in three ways. First, you can call the element as a function which will wait for the element to be visible and return it. This is what you would typically find in a page object model.
-
-```ts
-const todoPage = new TodoPage(page)
-const saveButton = await todoPage.saveButton()
-await saveButton.click()
-```
-
-This however generates a lot of extra boilerplate code by first waiting for the element and then calling the associated method on the element. Thankfully, Lariat makes this easier!
+Elements are represented using Playwright [locators](https://playwright.dev/docs/next/api/class-locator) .
 
 ```ts
 const todoPage = new TodoPage(page)
 await todoPage.saveButton.click()
-```
-
-Not only that, but with Lariat you can access the underlying element selector using the `$` property on the element. For example, you could use this to wait for the element to become hidden.
-
-```ts
-const todoPage = new TodoPage(page)
-await todoPage.saveButton.click()
-await page.waitForSelector(todoPage.saveButton.$, { state: 'hidden' })
 ```
 
 ### Dynamic selectors
@@ -79,7 +62,8 @@ class TodoPage extends Collection {
 }
 
 const todoPage = new TodoPage(page)
-const item = await todoPage.item('Finish the website')()
+const item = todoPage.item('Finish the website')
+await item.click()
 ```
 
 ## Utility methods
