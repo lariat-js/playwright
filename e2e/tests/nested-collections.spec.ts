@@ -5,7 +5,7 @@ class Child extends Collection {
   input = this.el('input')
 }
 
-test.describe('Nested collection', () => {
+test.describe('Nested collections', () => {
   test('locate child elements relative to the child root', async ({ page }) => {
     class Parent extends Collection {
       child = this.nest(Child, '#child')
@@ -31,5 +31,10 @@ test.describe('Nested collection', () => {
 
     const parent = new Parent(page)
     await expect(parent.child.input).toHaveCount(2)
+  })
+
+  test('can escape nesting', async ({ page }) => {
+    await page.setContent('<div id="content"></div><p id="modal">Hi</p>')
+    console.log()
   })
 })

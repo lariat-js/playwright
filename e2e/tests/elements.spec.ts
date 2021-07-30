@@ -5,7 +5,7 @@ class RootPage extends Collection {
   inner = this.el('p')
 }
 
-test.describe('Root element', () => {
+test.describe('Elements', () => {
   test('provides access to the root element', async ({ page }) => {
     await page.setContent('<p>One</p><span>Two</span>')
     const rootPage = new RootPage(page.locator('p'))
