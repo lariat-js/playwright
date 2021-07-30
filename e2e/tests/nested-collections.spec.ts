@@ -33,7 +33,7 @@ test.describe('Nested collections', () => {
     await expect(parent.child.input).toHaveCount(2)
   })
 
-  test('can escape nesting using the page root', async ({ page }) => {
+  test('can escape nesting using the origin', async ({ page }) => {
     class Parent extends Collection {
       child = this.nest(Child, this.origin)
     }

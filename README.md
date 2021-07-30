@@ -66,6 +66,17 @@ const item = todoPage.item('Finish the website')
 await item.click()
 ```
 
+### Portals
+
+Sometimes, the DOM structure of a page might not match the visual structure exactly. For example, if you use React's `createPortal` function you can render an element outside the main React tree. To support these use cases, Lariat allows you to pass a `portal` option to `Collection.el()` to indicate that the element should not be based off the `root` element.
+
+```ts
+class TodoPage extends Collection {
+  root = this.el('#root')
+  modal = this.el('#modal', { portal: true })
+}
+```
+
 ## Utility methods
 
 Because collections are plain JavaScript classes, you can easily add utility methods to your collections.
@@ -87,7 +98,7 @@ await todoPage.create('Finish the website')
 
 ## Nested collections
 
-So far, we've shown examples of simple collections, but the true power of Lariat is in the ability to nest collections inside each other. With this approach, you can create a page object structure that resembles your page layout.
+So far, we've shown examples of simple collections, but Lariat also gives you the ability to nest collections inside each other. With this approach, you can create a page object structure that more closely resembles your page layout.
 
 To nest a collection, use the `Collection.nest()` method and pass the nested collection class and the root of the nested collection.
 
@@ -105,5 +116,13 @@ If your nested collection is used merely to group a set of related elements toge
 ```ts
 class TodoPage extends Collection {
   field = this.nest(TextField, this.root)
+}
+```
+
+If your nested collection exists outside the DOM structure of the parent collection, you can use the parent's `origin` property as the root of the child collection. This behaves very similarly to the `portal` option for `Collection.el()`.
+
+```ts
+class TodoPage extends Collection {
+  modal = this.nest(Modal, this.origin)
 }
 ```
