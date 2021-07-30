@@ -24,24 +24,18 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "test": "jest",
-    "ts": "tsc",
+    "test": "playwright test",
     "release": "./scripts/release.sh"
   },
   "dependencies": {
     "playwright-core": "1.14.0-next-1627569199000"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/preset-env": "^7.14.8",
-    "@babel/preset-typescript": "^7.14.5",
     "@changesets/cli": "^2.16.0",
-    "@playwright/test": "^1.13.1",
-    "@types/jest": "^26.0.24",
+    "@playwright/test": "1.14.0-next-alpha-jul-30-2021",
     "@typescript-eslint/eslint-plugin": "^4.28.4",
     "@typescript-eslint/parser": "^4.28.4",
     "eslint": "^7.31.0",
-    "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "typescript": "^4.3.5"
   }
