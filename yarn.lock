@@ -957,7 +957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:1.14.0-next-alpha-jul-30-2021":
+"@playwright/test@npm:next":
   version: 1.14.0-next-alpha-jul-30-2021
   resolution: "@playwright/test@npm:1.14.0-next-alpha-jul-30-2021"
   dependencies:
@@ -2695,11 +2695,11 @@ __metadata:
   resolution: "lariat@workspace:."
   dependencies:
     "@changesets/cli": ^2.16.0
-    "@playwright/test": 1.14.0-next-alpha-jul-30-2021
+    "@playwright/test": next
     "@typescript-eslint/eslint-plugin": ^4.28.4
     "@typescript-eslint/parser": ^4.28.4
     eslint: ^7.31.0
-    playwright-core: 1.14.0-next-1627569199000
+    playwright-core: next
     prettier: ^2.3.2
     typescript: ^4.3.5
   languageName: unknown
@@ -3197,9 +3197,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.14.0-next-1627569199000":
-  version: 1.14.0-next-1627569199000
-  resolution: "playwright-core@npm:1.14.0-next-1627569199000"
+"playwright-core@npm:next":
+  version: 1.14.0-next-alpha-jul-30-2021
+  resolution: "playwright-core@npm:1.14.0-next-alpha-jul-30-2021"
   dependencies:
     commander: ^6.1.0
     debug: ^4.1.1
@@ -3217,7 +3217,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: f2a8143de18aa346d23ac1c76c49ea9adf1abde8d0ff6368f1f71a9bae9077b77f80a6c458f68e19499f10e8a6bd150f695c7d4fcef2d9ff06c04bfab8a6be5f
+  checksum: 9b44131f1ee6f2588cdab8dd1b8f1e042ef373ebf36c822d6b68ea95064c7f1fee0e462ca197c4f88b4ab70b5135f521f9fc178efb91f39b9599960b93d9f893
   languageName: node
   linkType: hard
 
