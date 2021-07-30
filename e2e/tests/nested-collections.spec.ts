@@ -35,7 +35,7 @@ test.describe('Nested collections', () => {
 
   test('can escape nesting using the page root', async ({ page }) => {
     class Parent extends Collection {
-      child = this.nest(Child, this.pageRoot)
+      child = this.nest(Child, this.origin)
     }
 
     await page.setContent('<div id="content"></div><input id="hi">')
