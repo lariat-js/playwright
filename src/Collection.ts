@@ -1,3 +1,4 @@
+import { Locator } from '@playwright/test'
 import type { Handle, NewableCollection } from './types'
 
 export interface ElementOptions {
@@ -33,7 +34,7 @@ export class Collection {
    * @param selector - The selector that identifies the element.
    * @param options - Options for how to build the locator.
    */
-  protected el(selector: string, options?: ElementOptions) {
+  protected el(selector: string, options?: ElementOptions): Locator {
     return options?.portal
       ? this.origin.locator(selector)
       : this.root.locator(selector)
@@ -56,7 +57,7 @@ export class Collection {
   protected nest<T extends Collection>(
     collection: NewableCollection<T>,
     root: string | Handle
-  ) {
+  ): T {
     const rootElement = typeof root === 'string' ? this.el(root) : root
     const instance = new collection(rootElement)
     instance.origin = this.origin

@@ -28,19 +28,4 @@ test.describe('Elements', () => {
     const modalPage = new ModalPage(page)
     await expect(modalPage.modal).toHaveText('Hi')
   })
-
-  test('class field does not matter', async ({ page }) => {
-    // Basically, we want to ensure that the `root` property doesn't magically
-    // work just because it is often defined first in the class.
-    class OrderPage extends Collection {
-      button = this.el('button')
-      root = this.el('#content')
-    }
-
-    await page.setContent(
-      '<button>Outside</button><div id="content"><button>Inner</button></div>'
-    )
-    const orderPage = new OrderPage(page)
-    await expect(orderPage.button).toHaveText('Inner')
-  })
 })
