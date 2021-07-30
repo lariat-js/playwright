@@ -12,7 +12,7 @@ jobs:
       - run: yarn install --immutable
       - run: yarn lint
       - run: yarn prettier --check .
-      - run: yarn ts
+      - run: yarn tsc --noEmit
   test:
     runs-on: ubuntu-latest
     strategy:
