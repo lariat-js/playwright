@@ -1,5 +1,11 @@
 # lariat
 
+## 0.0.6
+
+### Patch Changes
+
+- 97d9917: Use `main` field until better ecosystem support for `exports`.
+
 ## 0.0.5
 
 ### Patch Changes
