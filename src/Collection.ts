@@ -1,6 +1,6 @@
 import type { Handle, NewableCollection } from './types'
 
-interface ElementOptions {
+export interface ElementOptions {
   portal?: boolean
 }
 
