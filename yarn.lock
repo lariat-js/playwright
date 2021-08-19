@@ -2699,7 +2699,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^4.28.4
     "@typescript-eslint/parser": ^4.28.4
     eslint: ^7.31.0
-    playwright-core: next
+    playwright-core: ^1.14.0
     prettier: ^2.3.2
     typescript: ^4.3.5
   languageName: unknown
@@ -3197,9 +3197,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:next":
-  version: 1.14.0-next-alpha-jul-30-2021
-  resolution: "playwright-core@npm:1.14.0-next-alpha-jul-30-2021"
+"playwright-core@npm:^1.14.0":
+  version: 1.14.0
+  resolution: "playwright-core@npm:1.14.0"
   dependencies:
     commander: ^6.1.0
     debug: ^4.1.1
@@ -3217,7 +3217,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: 9b44131f1ee6f2588cdab8dd1b8f1e042ef373ebf36c822d6b68ea95064c7f1fee0e462ca197c4f88b4ab70b5135f521f9fc178efb91f39b9599960b93d9f893
+  checksum: b1bc10986e769480d3b064b9feafd24edb1b50f5ade74040fb4823ea32d83b6779883a62ccd4920c890c5be26d3986aff8020de436c4472769f8c48426042d72
   languageName: node
   linkType: hard
 
