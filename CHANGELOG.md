@@ -1,5 +1,11 @@
 # lariat
 
+## 0.1.0
+
+### Minor Changes
+
+- 68879ea: Update Playwright dependency to version 1.14 which support locators.
+
 ## 0.0.7
 
 ### Patch Changes
