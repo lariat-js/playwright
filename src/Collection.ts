@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test'
+import type { Locator } from 'playwright-core'
 import type { Handle, NewableCollection } from './types'
 
 export interface ElementOptions {
