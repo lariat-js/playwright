@@ -1,5 +1,11 @@
 # lariat
 
+## 0.1.1
+
+### Patch Changes
+
+- 288767a: Fix `Locator` type being imported from `@playwright/test` instead of `playwright-core` like it should have been.
+
 ## 0.1.0
 
 ### Minor Changes
