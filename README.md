@@ -72,7 +72,6 @@ Sometimes, the DOM structure of a page might not match the visual structure exac
 
 ```ts
 class TodoPage extends Collection {
-  root = this.el('#root')
   modal = this.el('#modal', { portal: true })
 }
 ```

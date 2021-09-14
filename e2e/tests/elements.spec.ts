@@ -20,12 +20,11 @@ test.describe('Elements', () => {
 
   test('can escape nesting using the portal option', async ({ page }) => {
     class ModalPage extends Collection {
-      root = this.el('#content')
       modal = this.el('#modal', { portal: true })
     }
 
     await page.setContent('<div id="content"></div><p id="modal">Hi</p>')
-    const modalPage = new ModalPage(page)
+    const modalPage = new ModalPage(page.locator('#content'))
     await expect(modalPage.modal).toHaveText('Hi')
   })
 })
