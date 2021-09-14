@@ -29,6 +29,7 @@ jobs:
       - run: yarn playwright install chromium
       - run: yarn test
       - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
         with:
           name: test-artifacts
           path: e2e/test-results
