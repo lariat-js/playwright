@@ -3,7 +3,7 @@ on:
   pull_request:
     branches: [main]
 jobs:
-  test:
+  format:
     runs-on: ubuntu-latest
     if: github.repository == 'Widen/lariat'
     steps:

@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test'
-import { Collection } from '../../src'
+import { Collection } from '../src'
 
 class RootPage extends Collection {
   inner = this.el('p')
