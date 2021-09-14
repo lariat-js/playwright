@@ -1,4 +1,4 @@
-import { Page, Frame, Locator } from 'playwright-core'
+import type { Page, Frame, Locator } from 'playwright-core'
 
 export type Handle = Page | Frame | Locator
 

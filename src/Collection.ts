@@ -67,7 +67,9 @@ export class Collection<T extends Handle = Locator> {
    */
   public get frame(): Page | Frame {
     return isLocator(this.root)
-      ? (this.root as unknown as { _frame: Frame })._frame
+      ? // Playwright doesn't currently expose the frame of a locator as a
+        // public API, so for now we need to get the private property.
+        (this.root as unknown as { _frame: Frame })._frame
       : this.root
   }
 }
