@@ -21,7 +21,7 @@ To create your own collections, simply create a class which extends the `Collect
 ```ts
 import { Collection } from 'lariat'
 
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   input = this.el('#todo-input')
 }
 ```
@@ -29,7 +29,7 @@ class TodoPage extends Collection {
 With your collection defined, you can instantiate it in your test to access the elements.
 
 ```ts
-test('create a todo', async () => {
+test('create a todo', async ({ page }) => {
   const todoPage = new TodoPage(page)
   await todoPage.input.fill('Finish the website')
 })
@@ -40,7 +40,7 @@ test('create a todo', async () => {
 Elements are defined in collections using the `Collection.el()` method.
 
 ```ts
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   saveButton = this.el('#save-button')
 }
 ```
@@ -57,7 +57,7 @@ await todoPage.saveButton.click()
 Because collections in Lariat are plain JavaScript classes, you can easily create elements with dynamic selectors. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
 
 ```ts
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   item = (name: string) => this.el(`#todo-item[data-name="${name}"]`)
 }
 
@@ -71,8 +71,7 @@ await item.click()
 Sometimes, the DOM structure of a page might not match the visual structure exactly. For example, if you use React's `createPortal` function you can render an element outside the main React tree. To support these use cases, Lariat allows you to pass a `portal` option to `Collection.el()` to indicate that the element should not be based off the `root` element.
 
 ```ts
-class TodoPage extends Collection {
-  root = this.el('#root')
+class TodoPage extends Collection<Page> {
   modal = this.el('#modal', { portal: true })
 }
 ```
@@ -82,7 +81,7 @@ class TodoPage extends Collection {
 Because collections are plain JavaScript classes, you can easily add utility methods to your collections.
 
 ```ts
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   input = this.el('#todo-input')
   saveButton = this.el('#save-button')
 
@@ -103,7 +102,7 @@ So far, we've shown examples of simple collections, but Lariat also gives you th
 To nest a collection, use the `Collection.nest()` method and pass the nested collection class and the root of the nested collection.
 
 ```ts
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   field = this.nest(TextField, '#todo-field')
 }
 
@@ -114,15 +113,15 @@ await todoPage.field.input.fill('Finish the website')
 If your nested collection is used merely to group a set of related elements together, you can use the parent's `root` property as the root of the child collection.
 
 ```ts
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   field = this.nest(TextField, this.root)
 }
 ```
 
-If your nested collection exists outside the DOM structure of the parent collection, you can use the parent's `origin` property as the root of the child collection. This behaves very similarly to the `portal` option for `Collection.el()`.
+If your nested collection exists outside the DOM structure of the parent collection, you can use the parent's `frame` property as the root of the child collection. This behaves very similarly to the `portal` option for `Collection.el()`.
 
 ```ts
-class TodoPage extends Collection {
-  modal = this.nest(Modal, this.origin)
+class TodoPage extends Collection<Page> {
+  modal = this.nest(Modal, this.frame)
 }
 ```

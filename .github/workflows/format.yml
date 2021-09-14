@@ -2,10 +2,10 @@ name: Format
 on:
   pull_request:
     branches: [main]
-if: github.repository == 'Widen/lariat'
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: github.repository == 'Widen/lariat'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
