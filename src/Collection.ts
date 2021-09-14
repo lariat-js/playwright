@@ -14,7 +14,7 @@ export class Collection<T extends Handle = Locator> {
    * the most current `root` element is used.
    *
    * If `options.portal` is set to true, the locator will be based off the
-   * `origin`, rather than the `root` thus escaping from any collection nesting.
+   * `frame`, rather than the `root` thus escaping from any collection nesting.
    * This is useful to represent a page structure whose visual appearance
    * differs from it's DOM structure.
    *
