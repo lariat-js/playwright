@@ -1,6 +1,7 @@
 .vscode/
 node_modules/
 lib/
+test-results/
 
 # Yarn
 .yarn/*
