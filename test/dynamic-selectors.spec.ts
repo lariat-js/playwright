@@ -11,6 +11,7 @@ test.describe('Dynamic selectors', () => {
       '<li data-name="Hi">One</li><li data-name="Ho">Two</li>'
     )
     const todoPage = new TodoPage(page)
+    await page.waitForSelector('div', { timeout: 2 })
     await expect(todoPage.item('Ho')).toHaveText('Two')
   })
 })
