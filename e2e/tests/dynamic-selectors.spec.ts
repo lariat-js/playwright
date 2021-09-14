@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test'
+import { expect, Page, test } from '@playwright/test'
 import { Collection } from '../../src'
 
-class TodoPage extends Collection {
+class TodoPage extends Collection<Page> {
   item = (name: string) => this.el(`[data-name="${name}"]`)
 }
 

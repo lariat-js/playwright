@@ -1,5 +1,5 @@
-import type { Frame, Locator } from 'playwright-core'
-import type { Handle, NewableCollection } from './types'
+import type { Frame, Locator, Page } from 'playwright-core'
+import { Handle, isLocator } from './utils'
 
 export interface ElementOptions {
   portal?: boolean
@@ -34,26 +34,39 @@ export class Collection<T extends Handle = Locator> {
    *
    * @param collection - Uninstantiated collection class to nest.
    * @param root - The root of the nested collection. This could be a static
-   * string, an element from the parent collection, or the parent collection's
-   * `origin`.
+   * string, an element from the parent collection, or the collection's frame.
    *
    * @example this.nest(TextField, '#my-text-field')
    * @example this.nest(TextField, this.form)
-   * @example this.nest(TextField, this.origin)
+   * @example this.nest(TextField, this.frame)
    */
-  protected nest<Root extends Handle, Nested extends Collection<Root>>(
-    collection: NewableCollection<Root, Nested>,
+  protected nest<U>(
+    collection: new (root: Locator) => U,
+    root: string | Locator
+  ): U
+  protected nest<Root extends Page | Frame, U>(
+    collection: new (root: Root) => U,
+    root: Root
+  ): U
+  protected nest<Root extends string | Handle, U>(
+    collection: new (root: Root) => U,
     root: string | Root
-  ): T {
-    return new collection(typeof root === 'string' ? this.el(root) : root)
+  ): U {
+    return new collection(
+      typeof root === 'string' ? (this.el(root) as Root) : root
+    )
   }
 
   /**
-   * Retrieves the frame that the collection is based off of. Used when
-   * creating an element in a portal.
+   * Returns the page or frame that the collection is attached to. This can be
+   * used when nesting a collection if the nested collection's locators elements
+   * should be based off the page or frame rather than the parent collection's
+   * root.
+   *
+   * @example this.nest(TextField, this.frame)
    */
-  private get frame() {
-    return '_frame' in this.root
+  public get frame(): Page | Frame {
+    return isLocator(this.root)
       ? (this.root as unknown as { _frame: Frame })._frame
       : this.root
   }
