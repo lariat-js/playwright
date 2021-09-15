@@ -72,4 +72,15 @@ export class Collection<T extends Handle = Locator> {
         (this.root as unknown as { _frame: Frame })._frame
       : this.root
   }
+
+  /**
+   * Returns the page that the collection is attached to. This can be used when
+   * you need to access page methods inside your collection utility methods. For
+   * example, if a utility needs to access `page.mouse`, this will allow that.
+   *
+   * @example this.page.mouse.down()
+   */
+  private get page() {
+    return 'page' in this.frame ? this.frame.page() : this.frame
+  }
 }
