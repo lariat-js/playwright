@@ -1,5 +1,11 @@
 # lariat
 
+## 0.3.0
+
+### Minor Changes
+
+- 30b884a: Allow accessing the page a collection is associated with.
+
 ## 0.2.0
 
 ### Minor Changes
