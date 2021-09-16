@@ -11,23 +11,11 @@ export function enhance<T>(
   root: Locator,
   instance: T
 ): NestedCollection<T> {
-  Object.defineProperties(instance, {
-    nth: {
-      value(this: NestedCollection<T>, index: number) {
-        return new collection(root.nth(index))
-      },
-    },
-    first: {
-      value(this: NestedCollection<T>) {
-        return this.nth(0)
-      },
-    },
-    last: {
-      value(this: NestedCollection<T>) {
-        return this.nth(-1)
-      },
-    },
-  })
+  const inst = instance as NestedCollection<T>
 
-  return instance as NestedCollection<T>
+  inst.nth = (index: number) => new collection(root.nth(index))
+  inst.first = () => new collection(root.first())
+  inst.last = () => new collection(root.last())
+
+  return inst
 }
