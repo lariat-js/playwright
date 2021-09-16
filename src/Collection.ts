@@ -45,18 +45,22 @@ export class Collection<T extends Handle = Locator> {
     collection: new (root: Locator) => U,
     root: string | Locator
   ): NestedCollection<U>
-  protected nest<Root extends Page | Frame, U>(
+  protected nest<U, Root extends Page | Frame>(
     collection: new (root: Root) => U,
     root: Root
-  ): NestedCollection<U>
-  protected nest<Root extends string | Handle, U>(
-    collection: new (root: Root) => U,
+  ): U
+  protected nest<U, Root extends Handle>(
+    collection: new (root: Handle) => U,
     root: string | Root
-  ): NestedCollection<U> {
-    const rootEl = typeof root === 'string' ? (this.el(root) as Root) : root
-    const instance = new collection(rootEl)
+  ): NestedCollection<U> | U {
+    const rootElement = typeof root === 'string' ? this.el(root) : root
+    const instance = new collection(rootElement)
 
-    return enhance(collection as any, rootEl as any, instance)
+    // If the root element is a locator, it can use the `nth`, `first`, and
+    // `last` methods and thus it should be enhanced.
+    return isLocator(rootElement)
+      ? enhance(collection, rootElement, instance)
+      : instance
   }
 
   /**

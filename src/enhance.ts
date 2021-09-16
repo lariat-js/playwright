@@ -7,7 +7,7 @@ export type NestedCollection<T> = T & {
 }
 
 export function enhance<T>(
-  collection: new (root: unknown) => T,
+  collection: new (root: Locator) => T,
   root: Locator,
   instance: T
 ): NestedCollection<T> {
