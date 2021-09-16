@@ -2,13 +2,17 @@ import { expect, Page, test } from '@playwright/test'
 import { Collection } from '../src'
 
 const content = `
-  <span>One</span>
-  <span>Two</span>
-  <span>Three</span>
+  <div>Child <span>One</span></div>
+  <div>Child <span>Two</span></div>
+  <div>Child <span>Three</span></div>
 `
 
+class Child extends Collection {
+  span = this.el('span')
+}
+
 class Parent extends Collection<Page> {
-  span = this.nest(Collection, 'span')
+  child = this.nest(Child, 'div')
 }
 
 test.describe('nth', () => {
@@ -18,8 +22,11 @@ test.describe('nth', () => {
     await page.setContent(content)
     const parent = new Parent(page)
 
-    await expect(parent.span.first().root).toHaveText('One')
-    await expect(parent.span.nth(1).root).toHaveText('Two')
-    await expect(parent.span.last().root).toHaveText('Three')
+    await expect(parent.child.first().root).toHaveText('Child One')
+    await expect(parent.child.first().span).toHaveText('One')
+    await expect(parent.child.nth(1).root).toHaveText('Child Two')
+    await expect(parent.child.nth(1).span).toHaveText('Two')
+    await expect(parent.child.last().root).toHaveText('Child Three')
+    await expect(parent.child.last().span).toHaveText('Three')
   })
 })
