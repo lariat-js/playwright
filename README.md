@@ -125,3 +125,17 @@ class TodoPage extends Collection<Page> {
   modal = this.nest(Modal, this.frame)
 }
 ```
+
+## Accessing the page or frame
+
+Lariat makes it easy to access the page or frame that a collection is associated with.
+
+```ts
+class TodoPage extends Collection {
+  input = this.el('#todo-input')
+}
+
+const todoPage = new TodoPage(page.locator('#my-page'))
+await todoPage.frame.goto('https://google.com')
+await todoPage.page.mouse.down()
+```

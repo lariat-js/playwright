@@ -80,7 +80,7 @@ export class Collection<T extends Handle = Locator> {
    *
    * @example this.page.mouse.down()
    */
-  private get page() {
+  public get page(): Page {
     return 'page' in this.frame ? this.frame.page() : this.frame
   }
 }
