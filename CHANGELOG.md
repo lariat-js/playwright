@@ -1,5 +1,11 @@
 # lariat
 
+## 0.4.1
+
+### Patch Changes
+
+- 5efc2e3: Ensure that `this.frame` always returns a `Frame` rather than a `Page | Frame` like it used to.
+
 ## 0.4.0
 
 ### Minor Changes
