@@ -14,8 +14,8 @@ export function enhance<T>(
   const inst = instance as NestedCollection<T>
 
   inst.nth = (index: number) => new collection(root.nth(index))
-  inst.first = () => new collection(root.first())
-  inst.last = () => new collection(root.last())
+  inst.first = () => inst.nth(0)
+  inst.last = () => inst.nth(-1)
 
   return inst
 }
