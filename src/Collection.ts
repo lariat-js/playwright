@@ -64,18 +64,22 @@ export class Collection<T extends Handle = Locator> {
   }
 
   /**
-   * Returns the page or frame that the collection is attached to. This can be
-   * used when nesting a collection if the nested collection's locators elements
-   * should be based off the page or frame rather than the parent collection's
-   * root.
+   * Returns the frame that the collection is attached to. This can be used when
+   * nesting a collection if the nested collection's locators elements should
+   * be based off the page or frame rather than the parent collection's root.
+   *
+   * If the root of the collection is a page, then the main frame of the page
+   * will be returned.
    *
    * @example this.nest(TextField, this.frame)
    */
-  public get frame(): Page | Frame {
+  public get frame(): Frame {
     return isLocator(this.root)
       ? // Playwright doesn't currently expose the frame of a locator as a
         // public API, so for now we need to get the private property.
         (this.root as unknown as { _frame: Frame })._frame
+      : 'mainFrame' in this.root
+      ? this.root.mainFrame()
       : this.root
   }
 
@@ -87,6 +91,6 @@ export class Collection<T extends Handle = Locator> {
    * @example this.page.mouse.down()
    */
   public get page(): Page {
-    return 'page' in this.frame ? this.frame.page() : this.frame
+    return this.frame.page()
   }
 }
