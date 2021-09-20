@@ -126,6 +126,21 @@ class TodoPage extends Collection<Page> {
 }
 ```
 
+### `first`, `last`, and `nth`
+
+In some cases, you may have a nested collection where multiple instances exist on the page. For example, a todo list may contain multiple todo items each of which are represented as a collection. To make these scenarios easier, Lariat provides `first`, `last`, and `nth` methods which will return a new instance of the nested collection scoped to that specific item.
+
+```ts
+class TodoPage extends Collection<Page> {
+  item = this.nest(TodoItem, '.todo-item')
+}
+
+const todoPage = new TodoPage(page)
+const firstItem = todoPage.item.first()
+const secondItem = todoPage.item.nth(1)
+const lastItem = todoPage.item.last()
+```
+
 ## Accessing the page or frame
 
 Lariat makes it easy to access the page or frame that a collection is associated with.

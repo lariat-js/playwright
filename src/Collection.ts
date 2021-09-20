@@ -1,4 +1,5 @@
 import type { Frame, Locator, Page } from 'playwright-core'
+import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
 export interface ElementOptions {
@@ -43,18 +44,23 @@ export class Collection<T extends Handle = Locator> {
   protected nest<U>(
     collection: new (root: Locator) => U,
     root: string | Locator
-  ): U
-  protected nest<Root extends Page | Frame, U>(
+  ): NestedCollection<U>
+  protected nest<U, Root extends Page | Frame>(
     collection: new (root: Root) => U,
     root: Root
   ): U
-  protected nest<Root extends string | Handle, U>(
-    collection: new (root: Root) => U,
+  protected nest<U, Root extends Handle>(
+    collection: new (root: Handle) => U,
     root: string | Root
-  ): U {
-    return new collection(
-      typeof root === 'string' ? (this.el(root) as Root) : root
-    )
+  ): NestedCollection<U> | U {
+    const rootElement = typeof root === 'string' ? this.el(root) : root
+    const instance = new collection(rootElement)
+
+    // If the root element is a locator, it can use the `nth`, `first`, and
+    // `last` methods and thus it should be enhanced.
+    return isLocator(rootElement)
+      ? enhance(collection, rootElement, instance)
+      : instance
   }
 
   /**
