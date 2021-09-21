@@ -912,9 +912,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:^1.14.1":
-  version: 1.14.1
-  resolution: "@playwright/test@npm:1.14.1"
+"@playwright/test@npm:^1.15.0":
+  version: 1.15.0
+  resolution: "@playwright/test@npm:1.15.0"
   dependencies:
     "@babel/code-frame": ^7.14.5
     "@babel/core": ^7.14.8
@@ -943,6 +943,7 @@ __metadata:
     mime: ^2.4.6
     minimatch: ^3.0.3
     ms: ^2.1.2
+    open: ^8.2.1
     pirates: ^4.0.1
     pixelmatch: ^5.2.1
     pngjs: ^5.0.0
@@ -956,7 +957,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: 92adb066a999472a1de35c5439f0baca00210b1a16231362e72d5b27ad414e75d20f48756971109add6b259de3fbafef2080101c92e7f3ed956c4517984fa283
+  checksum: a3bcbb51d6a86467b6cfbf50be8c12635d62fee999a78af01da2c8c60cba2548a2312ba8470241d11b48892e26a83638da6a5d7ec2720e143e7e91723837d605
   languageName: node
   linkType: hard
 
@@ -1662,6 +1663,13 @@ __metadata:
   dependencies:
     clone: ^1.0.2
   checksum: 974f63dd0acb79d14e94ac0f2ea69a880ab2a6e4b341bb9bdc2409b4091b928abe2709a4e140528948d02f29c286efdef22851d1dc972636eed2ce8e1c5b7465
+  languageName: node
+  linkType: hard
+
+"define-lazy-prop@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "define-lazy-prop@npm:2.0.0"
+  checksum: aefea62111b83127cdbc030a230e06a1c718049f737ef72892b036aeaa882fcbd801f311145fbbb66df0c34b035dfe745eab1ad76c52e633427ca6f84eca38ef
   languageName: node
   linkType: hard
 
@@ -2414,6 +2422,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-docker@npm:^2.0.0, is-docker@npm:^2.1.1":
+  version: 2.2.1
+  resolution: "is-docker@npm:2.2.1"
+  bin:
+    is-docker: cli.js
+  checksum: 7dbd6eecfe91984ef28ee80b13bd20ce4b27c1645542ae714a3976c881f7d166a3dcddb8b4f67c22285c4505f0b0e585a3b12feb4518b17f86b8a15b9f55c718
+  languageName: node
+  linkType: hard
+
 "is-extglob@npm:^2.1.1":
   version: 2.1.1
   resolution: "is-extglob@npm:2.1.1"
@@ -2478,6 +2495,15 @@ __metadata:
   version: 1.0.2
   resolution: "is-windows@npm:1.0.2"
   checksum: dd1ed8339a28c68fb52f05931c832488dafc90063e53b97a69ead219a5584d7f3e6e564731c2f983962ff5403afeb05365d88ce9af34c8dae76a14911020d73a
+  languageName: node
+  linkType: hard
+
+"is-wsl@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "is-wsl@npm:2.2.0"
+  dependencies:
+    is-docker: ^2.0.0
+  checksum: 3dcc4073d4682b9f9a4c59411bb73716cfff88eae58a6bd0af302b8ee016263a5150302bb296bc81a4cb0d3b66c86d82b3ee0146ed15f6558022bc847a2549a2
   languageName: node
   linkType: hard
 
@@ -2641,11 +2667,11 @@ __metadata:
   resolution: "lariat@workspace:."
   dependencies:
     "@changesets/cli": ^2.16.0
-    "@playwright/test": ^1.14.1
+    "@playwright/test": ^1.15.0
     "@typescript-eslint/eslint-plugin": ^4.28.4
     "@typescript-eslint/parser": ^4.28.4
     eslint: ^7.31.0
-    playwright-core: ^1.14.1
+    playwright-core: ^1.15.0
     prettier: ^2.3.2
     typescript: ^4.3.5
   languageName: unknown
@@ -2929,6 +2955,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"open@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "open@npm:8.2.1"
+  dependencies:
+    define-lazy-prop: ^2.0.0
+    is-docker: ^2.1.1
+    is-wsl: ^2.2.0
+  checksum: 69c86cddeaec0917fae43fa3c8801a6a11d0c8794da66556f1987233961f8558a952570a61c1991ee53d31117efb5774c8df87c70509ad6fec0c79adf34864d7
+  languageName: node
+  linkType: hard
+
 "optionator@npm:^0.9.1":
   version: 0.9.1
   resolution: "optionator@npm:0.9.1"
@@ -3136,9 +3173,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:^1.14.1":
-  version: 1.14.1
-  resolution: "playwright-core@npm:1.14.1"
+"playwright-core@npm:^1.15.0":
+  version: 1.15.0
+  resolution: "playwright-core@npm:1.15.0"
   dependencies:
     commander: ^6.1.0
     debug: ^4.1.1
@@ -3156,7 +3193,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: lib/cli/cli.js
-  checksum: 8a59a99a5ffe040453549fe78e9e0ba8edf3d2e209cfd17aad267d3e6aa674a6a58bf629fd5633aaafcc13cc8d81d2b469997fc4512937bc25eb9bb7518d997e
+  checksum: 8ec7bd5fba794fe6e4dc5e0adc704d1509f97248ad8b7bb0a96c692559f72c440010822a50e67a400d1617c36c79c501926ef8674d9f6b124356165894896a33
   languageName: node
   linkType: hard
 
