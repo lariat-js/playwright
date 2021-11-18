@@ -1,9 +1,10 @@
-import type { Frame, Locator, Page } from 'playwright-core'
+import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
 import { enhance, NestedCollection } from './enhance'
 import { Handle, isFrameLocator, isLocator } from './utils'
 
 export interface ElementOptions {
   portal?: boolean
+  frame?: string
 }
 
 export class Collection<T extends Handle = Locator> {
@@ -23,9 +24,11 @@ export class Collection<T extends Handle = Locator> {
    * @param options - Options for how to build the locator.
    */
   protected el(selector: string, options?: ElementOptions): Locator {
-    return options?.portal
-      ? this.frame.locator(selector)
-      : this.root.locator(selector)
+    const root = options?.portal ? this.frame : this.root
+
+    return options?.frame
+      ? root.frameLocator(options.frame).locator(selector)
+      : root.locator(selector)
   }
 
   /**
@@ -42,8 +45,8 @@ export class Collection<T extends Handle = Locator> {
    * @example this.nest(TextField, this.frame)
    */
   protected nest<U>(
-    collection: new (root: Locator) => U,
-    root: string | Locator
+    collection: new (root: Locator | FrameLocator) => U,
+    root: string | Locator | FrameLocator
   ): NestedCollection<U>
   protected nest<U, Root extends Page | Frame>(
     collection: new (root: Root) => U,
