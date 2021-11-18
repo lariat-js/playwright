@@ -1,5 +1,15 @@
 # lariat
 
+## 1.0.0
+
+### Major Changes
+
+- 7b71d4a: Release v1 of Lariat!
+
+### Minor Changes
+
+- 7b71d4a: Change `Collection` to a default export. A deprecated named export still exists to make migration easier.
+
 ## 0.4.1
 
 ### Patch Changes
