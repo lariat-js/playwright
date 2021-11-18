@@ -19,7 +19,7 @@ At the core of Lariat is the `Collection` class. This class is used to represent
 To create your own collections, simply create a class which extends the `Collection` class. You can then define elements using the `Collection.el()` method which we will explore more in a moment.
 
 ```ts
-import { Collection } from 'lariat'
+import Collection from 'lariat'
 
 class TodoPage extends Collection<Page> {
   input = this.el('#todo-input')
