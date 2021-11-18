@@ -1,1 +1,4 @@
-export { Collection, ElementOptions } from './Collection'
+import Collection from './Collection'
+
+export type { ElementOptions } from './Collection'
+export default Collection

@@ -6,7 +6,7 @@ export interface ElementOptions {
   portal?: boolean
 }
 
-export class Collection<T extends Handle = Locator> {
+export default class Collection<T extends Handle = Locator> {
   constructor(public root: T) {}
 
   /**
