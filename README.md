@@ -141,6 +141,42 @@ const secondItem = todoPage.item.nth(1)
 const lastItem = todoPage.item.last()
 ```
 
+## Frames
+
+Lariat has utilities for working with frames thanks to Playwright's [`FrameLocator`](https://playwright.dev/docs/next/api/class-framelocator).
+
+The simplest way to access an element in a frame is by using the `frame` option of `Collection.el`. Simply pass a string as a selector for the frame and Lariat will take care of the rest.
+
+```ts
+class FramePage extends Collection<Page> {
+  frameHeader = this.el('h1', { frame: '#my-frame' })
+}
+```
+
+However, if you need to access multiple elements in a frame, you can use `Collection.nest` with a `FrameLocator`.
+
+```ts
+class MyFrame extends Collection<FrameLocator> {
+  header = this.el('h1')
+  content = this.el('main')
+}
+
+class FramePage extends Collection<Page> {
+  myFrame = this.nest(MyFrame, this.page.frameLocator('#my-frame'))
+}
+```
+
+You can use a similar method to instantiate collections with a `FrameLocator` as the root.
+
+```ts
+class MyFrame extends Collection<FrameLocator> {
+  header = this.el('h1')
+  content = this.el('main')
+}
+
+new MyFrame(page.frameLocator('#my-frame'))
+```
+
 ## Accessing the page or frame
 
 Lariat makes it easy to access the page or frame that a collection is associated with.
