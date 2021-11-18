@@ -45,8 +45,12 @@ export class Collection<T extends Handle = Locator> {
    * @example this.nest(TextField, this.frame)
    */
   protected nest<U>(
-    collection: new (root: Locator | FrameLocator) => U,
-    root: string | Locator | FrameLocator
+    collection: new (root: Locator) => U,
+    root: string | Locator
+  ): NestedCollection<U>
+  protected nest<U>(
+    collection: new (root: FrameLocator) => U,
+    root: string | FrameLocator
   ): NestedCollection<U>
   protected nest<U, Root extends Page | Frame>(
     collection: new (root: Root) => U,
