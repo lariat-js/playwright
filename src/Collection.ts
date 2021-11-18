@@ -1,6 +1,6 @@
 import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
 import { enhance, NestedCollection } from './enhance'
-import { Handle, isFrameLocator, isLocator } from './utils'
+import { Handle, isLocator } from './utils'
 
 export interface ElementOptions {
   portal?: boolean
@@ -77,7 +77,7 @@ export class Collection<T extends Handle = Locator> {
    * @example this.nest(TextField, this.frame)
    */
   public get frame(): Frame {
-    return isLocator(this.root) || isFrameLocator(this.root)
+    return isLocator(this.root)
       ? // Playwright doesn't currently expose the frame of a locator as a
         // public API, so for now we need to get the private property.
         (this.root as unknown as { _frame: Frame })._frame
