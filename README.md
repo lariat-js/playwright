@@ -45,7 +45,7 @@ class TodoPage extends Collection<Page> {
 }
 ```
 
-Elements are represented using Playwright [locators](https://playwright.dev/docs/next/api/class-locator) .
+Elements are represented using Playwright [locators](https://playwright.dev/docs/api/class-locator) .
 
 ```ts
 const todoPage = new TodoPage(page)
@@ -143,7 +143,7 @@ const lastItem = todoPage.item.last()
 
 ## Frames
 
-Lariat has utilities for working with frames thanks to Playwright's [`FrameLocator`](https://playwright.dev/docs/next/api/class-framelocator).
+Lariat has utilities for working with frames thanks to Playwright's [`FrameLocator`](https://playwright.dev/docs/api/class-framelocator).
 
 The simplest way to access an element in a frame is by using the `frame` option of `Collection.el`. Simply pass a string as a selector for the frame and Lariat will take care of the rest.
 
