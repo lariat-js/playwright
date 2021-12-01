@@ -1,6 +1,6 @@
-import type { Page, Frame, Locator } from 'playwright-core'
+import type { Page, Frame, Locator, FrameLocator } from 'playwright-core'
 
-export type Handle = Page | Frame | Locator
+export type Handle = Page | Frame | FrameLocator | Locator
 
-export const isLocator = (handle: Handle): handle is Locator =>
+export const isLocator = (handle: Handle): handle is Locator | FrameLocator =>
   '_frame' in handle

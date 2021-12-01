@@ -1,7 +1,14 @@
-import { expect, Frame, Locator, Page, test } from '@playwright/test'
+import {
+  expect,
+  Frame,
+  FrameLocator,
+  Locator,
+  Page,
+  test,
+} from '@playwright/test'
 import Collection from '../src'
 
-class Child extends Collection<Page | Frame | Locator> {
+class Child extends Collection<Page | Frame | Locator | FrameLocator> {
   input = this.el('input')
 }
 

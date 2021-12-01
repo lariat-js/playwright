@@ -1,4 +1,4 @@
-import type { Locator } from 'playwright-core'
+import type { FrameLocator, Locator } from 'playwright-core'
 
 export type NestedCollection<T> = T & {
   nth(index: number): T
@@ -7,8 +7,8 @@ export type NestedCollection<T> = T & {
 }
 
 export function enhance<T>(
-  collection: new (root: Locator) => T,
-  root: Locator,
+  collection: new (root: Locator | FrameLocator) => T,
+  root: Locator | FrameLocator,
   instance: T
 ): NestedCollection<T> {
   const inst = instance as NestedCollection<T>
