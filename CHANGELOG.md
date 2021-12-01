@@ -1,5 +1,11 @@
 # lariat
 
+## 1.1.0
+
+### Minor Changes
+
+- e5ca566: Add support for [frame locators](https://playwright.dev/docs/api/class-framelocator)! Refer to the readme for more details about how to use frame locators in your collections.
+
 ## 1.0.0
 
 ### Major Changes
