@@ -939,9 +939,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@playwright/test@npm:rc":
-  version: 1.17.0-rc1
-  resolution: "@playwright/test@npm:1.17.0-rc1"
+"@playwright/test@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "@playwright/test@npm:1.17.0"
   dependencies:
     "@babel/code-frame": ^7.14.5
     "@babel/core": ^7.14.8
@@ -971,14 +971,14 @@ __metadata:
     open: ^8.3.0
     pirates: ^4.0.1
     pixelmatch: ^5.2.1
-    playwright-core: =1.17.0-rc1
+    playwright-core: =1.17.0
     pngjs: ^5.0.0
     rimraf: ^3.0.2
     source-map-support: ^0.4.18
     stack-utils: ^2.0.3
   bin:
     playwright: cli.js
-  checksum: dc2d0496b1ca2b2a87192c6e08e9264aecee2d1d23ff17cf143812b3dcb57d24bdb2622ee8c778a19cfdf16c32cdaee88420c75102eb8edab34192325d6259ba
+  checksum: bfde807c35033fef14a926a2703dce1de28b63af3a5cbf1966b53cede2321b93be98ea64582143a9b1323615f9055a6f91670c6fe234409a87ef58770a4a2720
   languageName: node
   linkType: hard
 
@@ -2721,11 +2721,11 @@ __metadata:
   resolution: "lariat@workspace:."
   dependencies:
     "@changesets/cli": ^2.16.0
-    "@playwright/test": rc
+    "@playwright/test": ^1.17.0
     "@typescript-eslint/eslint-plugin": ^4.28.4
     "@typescript-eslint/parser": ^4.28.4
     eslint: ^7.31.0
-    playwright-core: rc
+    playwright-core: ^1.17.0
     prettier: ^2.3.2
     typescript: ^4.3.5
   languageName: unknown
@@ -3244,9 +3244,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:=1.17.0-rc1, playwright-core@npm:rc":
-  version: 1.17.0-rc1
-  resolution: "playwright-core@npm:1.17.0-rc1"
+"playwright-core@npm:=1.17.0, playwright-core@npm:^1.17.0":
+  version: 1.17.0
+  resolution: "playwright-core@npm:1.17.0"
   dependencies:
     commander: ^8.2.0
     debug: ^4.1.1
@@ -3266,7 +3266,7 @@ __metadata:
     yazl: ^2.5.1
   bin:
     playwright: cli.js
-  checksum: 888ac8fb79ef082b82442bd0f11eb943bccdc5ae365a60a07adc12431eded88e0cdd000d0c4e7c409c2f8867450b58de22e1ef8c30e220a1ed631459401806b3
+  checksum: 3389a66b80718997708dab59a864102f531ce1359728caf09500a0b5c35b9b521e7944469b93c5f3347e874180abbc5195f1948ef1f719981e0bb691a33d077e
   languageName: node
   linkType: hard
 
