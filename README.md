@@ -8,8 +8,16 @@ Page object framework for end-to-end testing in Playwright.
 
 ## Installation
 
+### npm
+
 ```sh
 npm install lariat
+```
+
+### Yarn
+
+```sh
+yarn add lariat
 ```
 
 ## Basic Usage
