@@ -66,6 +66,18 @@ const todoPage = new TodoPage(page)
 await todoPage.saveButton.click()
 ```
 
+### Matching Text Content
+
+Elements can be matched by text content using the `hasText` option. This will
+only return elements that include the specified text or contain a child with the
+specified text.
+
+```ts
+class TodoPage extends Collection<Page> {
+  saveButton = this.el('button', { hasText: 'Save' })
+}
+```
+
 ### Dynamic selectors
 
 Because collections in Lariat are plain JavaScript classes, you can easily
