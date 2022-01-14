@@ -29,8 +29,7 @@ export class Collection<T extends Handle = Locator> {
 
   /**
    * Retrieve a locator to a given element on the page identified by the
-   * selector. The locator is lazily initialized when retrieved to ensure that
-   * the most current `root` element is used.
+   * selector.
    *
    * @param selector - The selector that identifies the element.
    * @param options - Options for how to build the locator.
