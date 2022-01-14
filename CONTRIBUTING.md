@@ -13,7 +13,7 @@ information on using pull requests.
 ## Tips
 
 - Smaller changes are easier to review
-- Give the PR a meaningful title and description with context surrounding
-  the changes
-- To close an issue automatically after a PR is merged, use keywords
-  "fix", "close", or "resolve" in the PR description, e.g. fix #1337.
+- Give the PR a meaningful title and description with context surrounding the
+  changes
+- To close an issue automatically after a PR is merged, use keywords "fix",
+  "close", or "resolve" in the PR description, e.g. fix #1337.
