@@ -8,15 +8,27 @@ Page object framework for end-to-end testing in Playwright.
 
 ## Installation
 
+### npm
+
 ```sh
 npm install lariat
 ```
 
+### Yarn
+
+```sh
+yarn add lariat
+```
+
 ## Basic Usage
 
-At the core of Lariat is the `Collection` class. This class is used to represent a collection of elements in a page or section of a page and can include associated utility methods for interacting with those elements.
+At the core of Lariat is the `Collection` class. This class is used to represent
+a collection of elements in a page or section of a page and can include
+associated utility methods for interacting with those elements.
 
-To create your own collections, simply create a class which extends the `Collection` class. You can then define elements using the `Collection.el()` method which we will explore more in a moment.
+To create your own collections, simply create a class which extends the
+`Collection` class. You can then define elements using the `Collection.el()`
+method which we will explore more in a moment.
 
 ```ts
 import Collection from 'lariat'
@@ -26,7 +38,8 @@ class TodoPage extends Collection<Page> {
 }
 ```
 
-With your collection defined, you can instantiate it in your test to access the elements.
+With your collection defined, you can instantiate it in your test to access the
+elements.
 
 ```ts
 test('create a todo', async ({ page }) => {
@@ -45,7 +58,8 @@ class TodoPage extends Collection<Page> {
 }
 ```
 
-Elements are represented using Playwright [locators](https://playwright.dev/docs/api/class-locator) .
+Elements are represented using Playwright
+[locators](https://playwright.dev/docs/api/class-locator) .
 
 ```ts
 const todoPage = new TodoPage(page)
@@ -54,7 +68,9 @@ await todoPage.saveButton.click()
 
 ### Dynamic selectors
 
-Because collections in Lariat are plain JavaScript classes, you can easily create elements with dynamic selectors. Consider a todo list where we find an item based on it's name. Our collection might look something like this:
+Because collections in Lariat are plain JavaScript classes, you can easily
+create elements with dynamic selectors. Consider a todo list where we find an
+item based on it's name. Our collection might look something like this:
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -68,7 +84,11 @@ await item.click()
 
 ### Portals
 
-Sometimes, the DOM structure of a page might not match the visual structure exactly. For example, if you use React's `createPortal` function you can render an element outside the main React tree. To support these use cases, Lariat allows you to pass a `portal` option to `Collection.el()` to indicate that the element should not be based off the `root` element.
+Sometimes, the DOM structure of a page might not match the visual structure
+exactly. For example, if you use React's `createPortal` function you can render
+an element outside the main React tree. To support these use cases, Lariat
+allows you to pass a `portal` option to `Collection.el()` to indicate that the
+element should not be based off the `root` element.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -78,7 +98,8 @@ class TodoPage extends Collection<Page> {
 
 ## Utility methods
 
-Because collections are plain JavaScript classes, you can easily add utility methods to your collections.
+Because collections are plain JavaScript classes, you can easily add utility
+methods to your collections.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -97,9 +118,12 @@ await todoPage.create('Finish the website')
 
 ## Nested collections
 
-So far, we've shown examples of simple collections, but Lariat also gives you the ability to nest collections inside each other. With this approach, you can create a page object structure that more closely resembles your page layout.
+So far, we've shown examples of simple collections, but Lariat also gives you
+the ability to nest collections inside each other. With this approach, you can
+create a page object structure that more closely resembles your page layout.
 
-To nest a collection, use the `Collection.nest()` method and pass the nested collection class and the root of the nested collection.
+To nest a collection, use the `Collection.nest()` method and pass the nested
+collection class and the root of the nested collection.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -110,7 +134,9 @@ const todoPage = new TodoPage(page)
 await todoPage.field.input.fill('Finish the website')
 ```
 
-If your nested collection is used merely to group a set of related elements together, you can use the parent's `root` property as the root of the child collection.
+If your nested collection is used merely to group a set of related elements
+together, you can use the parent's `root` property as the root of the child
+collection.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -118,7 +144,10 @@ class TodoPage extends Collection<Page> {
 }
 ```
 
-If your nested collection exists outside the DOM structure of the parent collection, you can use the parent's `frame` property as the root of the child collection. This behaves very similarly to the `portal` option for `Collection.el()`.
+If your nested collection exists outside the DOM structure of the parent
+collection, you can use the parent's `frame` property as the root of the child
+collection. This behaves very similarly to the `portal` option for
+`Collection.el()`.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -128,7 +157,11 @@ class TodoPage extends Collection<Page> {
 
 ### `first`, `last`, and `nth`
 
-In some cases, you may have a nested collection where multiple instances exist on the page. For example, a todo list may contain multiple todo items each of which are represented as a collection. To make these scenarios easier, Lariat provides `first`, `last`, and `nth` methods which will return a new instance of the nested collection scoped to that specific item.
+In some cases, you may have a nested collection where multiple instances exist
+on the page. For example, a todo list may contain multiple todo items each of
+which are represented as a collection. To make these scenarios easier, Lariat
+provides `first`, `last`, and `nth` methods which will return a new instance of
+the nested collection scoped to that specific item.
 
 ```ts
 class TodoPage extends Collection<Page> {
@@ -143,9 +176,12 @@ const lastItem = todoPage.item.last()
 
 ## Frames
 
-Lariat has utilities for working with frames thanks to Playwright's [`FrameLocator`](https://playwright.dev/docs/api/class-framelocator).
+Lariat has utilities for working with frames thanks to Playwright's
+[`FrameLocator`](https://playwright.dev/docs/api/class-framelocator).
 
-The simplest way to access an element in a frame is by using the `frame` option of `Collection.el`. Simply pass a string as a selector for the frame and Lariat will take care of the rest.
+The simplest way to access an element in a frame is by using the `frame` option
+of `Collection.el`. Simply pass a string as a selector for the frame and Lariat
+will take care of the rest.
 
 ```ts
 class FramePage extends Collection<Page> {
@@ -153,7 +189,8 @@ class FramePage extends Collection<Page> {
 }
 ```
 
-However, if you need to access multiple elements in a frame, you can use `Collection.nest` with a `FrameLocator`.
+However, if you need to access multiple elements in a frame, you can use
+`Collection.nest` with a `FrameLocator`.
 
 ```ts
 class MyFrame extends Collection<FrameLocator> {
@@ -166,7 +203,8 @@ class FramePage extends Collection<Page> {
 }
 ```
 
-You can use a similar method to instantiate collections with a `FrameLocator` as the root.
+You can use a similar method to instantiate collections with a `FrameLocator` as
+the root.
 
 ```ts
 class MyFrame extends Collection<FrameLocator> {
@@ -179,7 +217,8 @@ new MyFrame(page.frameLocator('#my-frame'))
 
 ## Accessing the page or frame
 
-Lariat makes it easy to access the page or frame that a collection is associated with.
+Lariat makes it easy to access the page or frame that a collection is associated
+with.
 
 ```ts
 class TodoPage extends Collection {
