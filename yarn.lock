@@ -1924,6 +1924,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-playwright@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "eslint-plugin-playwright@npm:0.7.1"
+  peerDependencies:
+    eslint: ">=7"
+    eslint-plugin-jest: ">=24"
+  peerDependenciesMeta:
+    eslint-plugin-jest:
+      optional: true
+  checksum: 77b5f8322dbc5f3b341dba3432c2672ec45c7b1e5a6c5a1194b63554d2cc1f634bc5e9a2ddec3a754d5af905f154b1b0eb4a61690d3618d65e2b8fb464a4b6a9
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^5.1.1":
   version: 5.1.1
   resolution: "eslint-scope@npm:5.1.1"
@@ -2937,6 +2950,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.9.1
     "@typescript-eslint/parser": ^5.9.1
     eslint: ^8.6.0
+    eslint-plugin-playwright: ^0.7.1
     playwright-core: ^1.18.0-rc1
     prettier: ^2.5.1
     typescript: ^4.5.4
