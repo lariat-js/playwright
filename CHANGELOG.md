@@ -4,7 +4,10 @@
 
 ### Minor Changes
 
-- e5ca566: Add support for [frame locators](https://playwright.dev/docs/api/class-framelocator)! Refer to the readme for more details about how to use frame locators in your collections.
+- e5ca566: Add support for
+  [frame locators](https://playwright.dev/docs/api/class-framelocator)! Refer to
+  the readme for more details about how to use frame locators in your
+  collections.
 
 ## 1.0.0
 
@@ -14,19 +17,22 @@
 
 ### Minor Changes
 
-- 7b71d4a: Change `Collection` to a default export. A deprecated named export still exists to make migration easier.
+- 7b71d4a: Change `Collection` to a default export. A deprecated named export
+  still exists to make migration easier.
 
 ## 0.4.1
 
 ### Patch Changes
 
-- 5efc2e3: Ensure that `this.frame` always returns a `Frame` rather than a `Page | Frame` like it used to.
+- 5efc2e3: Ensure that `this.frame` always returns a `Frame` rather than a
+  `Page | Frame` like it used to.
 
 ## 0.4.0
 
 ### Minor Changes
 
-- 1be805b: Add `nth`, `first`, and `last` properties for nested collections similar to the same methods that are available for locators.
+- 1be805b: Add `nth`, `first`, and `last` properties for nested collections
+  similar to the same methods that are available for locators.
 
   ```ts
   class TodoPage extends Collection<Page> {
@@ -57,19 +63,27 @@
 
 ### Minor Changes
 
-- b638933: Rename `Collection.origin` to `Collection.frame` and ensure that a frame is always returned. This is used internally by the `portal` option but can continue to be used for nesting collections where the nested collection should not be part of the parent collections locator chain.
-- b638933: Make `Collection` generic to allow specifying an exact type for the `root` property. By default the type of `root` will be `Locator`.
+- b638933: Rename `Collection.origin` to `Collection.frame` and ensure that a
+  frame is always returned. This is used internally by the `portal` option but
+  can continue to be used for nesting collections where the nested collection
+  should not be part of the parent collections locator chain.
+- b638933: Make `Collection` generic to allow specifying an exact type for the
+  `root` property. By default the type of `root` will be `Locator`.
 
 ### Patch Changes
 
-- b638933: Remove documentation showing how to manually set the `root` property as an member variable. This may still work but is discouraged.
-- b638933: Improve type safety of `Collection.nest`. Previously you could pass a `string` or `Locator` as the nested collection root even if the nested collection accepts a `Page` or `Frame` as the root.
+- b638933: Remove documentation showing how to manually set the `root` property
+  as an member variable. This may still work but is discouraged.
+- b638933: Improve type safety of `Collection.nest`. Previously you could pass a
+  `string` or `Locator` as the nested collection root even if the nested
+  collection accepts a `Page` or `Frame` as the root.
 
 ## 0.1.1
 
 ### Patch Changes
 
-- 288767a: Fix `Locator` type being imported from `@playwright/test` instead of `playwright-core` like it should have been.
+- 288767a: Fix `Locator` type being imported from `@playwright/test` instead of
+  `playwright-core` like it should have been.
 
 ## 0.1.0
 
@@ -81,7 +95,8 @@
 
 ### Patch Changes
 
-- 9b43893: Add better documentation for `Collection.el()` and `Collection.nest()`
+- 9b43893: Add better documentation for `Collection.el()` and
+  `Collection.nest()`
 
 ## 0.0.6
 
