@@ -3,8 +3,25 @@ import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
 export interface ElementOptions {
+  /**
+   * When true, the locator will be based off the `frame`, rather than the
+   * `root` thus escaping from any collection nesting. This is useful to
+   * represent a page structure whose visual appearance differs from it's
+   * DOM structure.
+   *
+   * @default false
+   */
   portal?: boolean
+  /**
+   * When defined, creates a frame locator which the element will be nested
+   * inside of.
+   */
   frame?: string
+  /**
+   * Matches elements containing specified text somewhere inside, possibly in a
+   * child or a descendant element.
+   */
+  hasText?: string | RegExp
 }
 
 export class Collection<T extends Handle = Locator> {
@@ -12,23 +29,20 @@ export class Collection<T extends Handle = Locator> {
 
   /**
    * Retrieve a locator to a given element on the page identified by the
-   * selector. The locator is lazily initialized when retrieved to ensure that
-   * the most current `root` element is used.
-   *
-   * If `options.portal` is set to true, the locator will be based off the
-   * `frame`, rather than the `root` thus escaping from any collection nesting.
-   * This is useful to represent a page structure whose visual appearance
-   * differs from it's DOM structure.
+   * selector.
    *
    * @param selector - The selector that identifies the element.
    * @param options - Options for how to build the locator.
    */
-  protected el(selector: string, options?: ElementOptions): Locator {
-    const root = options?.portal ? this.frame : this.root
+  protected el(
+    selector: string,
+    { portal, frame, hasText }: ElementOptions = {}
+  ): Locator {
+    const root = portal ? this.frame : this.root
 
-    return options?.frame
-      ? root.frameLocator(options.frame).locator(selector)
-      : root.locator(selector)
+    return frame
+      ? root.frameLocator(frame).locator(selector, { hasText })
+      : root.locator(selector, { hasText })
   }
 
   /**

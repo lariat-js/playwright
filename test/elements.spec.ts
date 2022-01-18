@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test'
+import { expect, Page, test } from '@playwright/test'
 import Collection from '../src'
 
 class RootPage extends Collection {
@@ -26,5 +26,15 @@ test.describe('Elements', () => {
     await page.setContent('<div id="content"></div><p id="modal">Hi</p>')
     const modalPage = new ModalPage(page.locator('#content'))
     await expect(modalPage.modal).toHaveText('Hi')
+  })
+
+  test('locates elements with specific text', async ({ page }) => {
+    class TodoPage extends Collection<Page> {
+      button = this.el('button', { hasText: 'Ho' })
+    }
+
+    await page.setContent('<button>Hi</button><button>Ho</button>')
+    const todoPage = new TodoPage(page)
+    await expect(todoPage.button).toHaveText('Ho')
   })
 })
