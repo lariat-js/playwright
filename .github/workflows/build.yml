@@ -44,7 +44,7 @@ jobs:
       - run: yarn install --immutable
       - name: Create release pull request or publish to npm
         id: changesets
-        uses: changesets/action@master
+        uses: changesets/action@v1
         with:
           publish: yarn release
         env:
