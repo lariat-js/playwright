@@ -2299,14 +2299,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-sort@npm:^2.3.1":
-  version: 2.3.1
-  resolution: "eslint-plugin-sort@npm:2.3.1"
+"eslint-plugin-sort@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "eslint-plugin-sort@npm:2.4.0"
   dependencies:
     "@typescript-eslint/experimental-utils": ^5.9.0
   peerDependencies:
     eslint: ">=6"
-  checksum: 16e2448b61231979c01e0891bda5e7553fe08a50bba4b6a1719444075d3807b1449d7a4558e3709bca2add312cdd86bb27d71aec26e427509b17dc17e33e4f11
+  checksum: 18b0eb30a145ae794b9653501af2bd6d1b3e42c37910d4c6b742fe621b6ef76c883761fa2a2d566b8201800e865534586d7c24d5edddaeb586d7fb6095674864
   languageName: node
   linkType: hard
 
@@ -3347,7 +3347,7 @@ __metadata:
     eslint: ^8.7.0
     eslint-config-widen: ^0.1.1
     eslint-plugin-playwright: ^0.7.1
-    eslint-plugin-sort: ^2.3.1
+    eslint-plugin-sort: ^2.4.0
     eslint-plugin-widen: ^0.1.1
     playwright-core: ^1.18.0-rc1
     prettier: ^2.5.1
