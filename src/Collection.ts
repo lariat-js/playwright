@@ -36,7 +36,7 @@ export class Collection<T extends Handle = Locator> {
    */
   protected el(
     selector: string,
-    { portal, frame, hasText }: ElementOptions = {}
+    { frame, hasText, portal }: ElementOptions = {}
   ): Locator {
     const root = portal ? this.frame : this.root
 

@@ -2253,9 +2253,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-widen@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "eslint-config-widen@npm:0.1.0"
+"eslint-config-widen@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "eslint-config-widen@npm:0.1.1"
   dependencies:
     eslint-config-prettier: ^8.3.0
   peerDependencies:
@@ -2282,7 +2282,7 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: f8a9e20f6a69bb7376da9a2e78b9dadc3f7edbedd903c66717d331628444af86b2c7b1f5b4add2040319d692d0c06eaa2473bf7f41a006f3c9dfafc042e1633c
+  checksum: 50d0a358dac2eaed092d4bcfa6638ba8548488798934216d797f98fa403d9c4f960c3fef4dc935751efb579b5c5b8b3972d6ac33c624af520702a56b36bc6e67
   languageName: node
   linkType: hard
 
@@ -2310,12 +2310,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-widen@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "eslint-plugin-widen@npm:0.1.0"
+"eslint-plugin-widen@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "eslint-plugin-widen@npm:0.1.1"
   peerDependencies:
     eslint: ">= 8"
-  checksum: 9079a5bee9161f46aea1a61674b61377d3e558f5605da7a85c0659f371d425f6f061cd265d07a68d70e5d01dd9035ffaffd5ffae8613f5c25ab5a02731c04c59
+  checksum: 7c454f45e419ef691b45987187aece2a0b284b4208bd60a9747f255564c5f8a4790bc4b394ef7111b65345aae9d414c18e5b3042792356888954ca3175dc6f29
   languageName: node
   linkType: hard
 
@@ -3345,10 +3345,10 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.9.1
     "@typescript-eslint/parser": ^5.9.1
     eslint: ^8.7.0
-    eslint-config-widen: ^0.1.0
+    eslint-config-widen: ^0.1.1
     eslint-plugin-playwright: ^0.7.1
     eslint-plugin-sort: ^2.3.1
-    eslint-plugin-widen: ^0.1.0
+    eslint-plugin-widen: ^0.1.1
     playwright-core: ^1.18.0-rc1
     prettier: ^2.5.1
     typescript: ^4.5.4
