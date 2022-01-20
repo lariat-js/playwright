@@ -1,5 +1,17 @@
 # lariat
 
+## 1.2.0
+
+### Minor Changes
+
+- e7a7733: Add `hasText` option to `Collection.el()` to filter by text using the
+  `hasText` locator option introduced in Playwright 1.18.
+
+### Patch Changes
+
+- 7233236: Remove deprecated named `Collection` export.
+- 862133d: Update dependencies to Playwright 1.18.
+
 ## 1.1.0
 
 ### Minor Changes
