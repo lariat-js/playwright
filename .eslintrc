@@ -1,12 +1,3 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:playwright/playwright-test"
-  ],
-  "env": {
-    "node": true
-  }
+  "extends": ["widen", "widen/typescript", "plugin:playwright/playwright-test"]
 }

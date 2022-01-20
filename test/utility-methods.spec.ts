@@ -1,4 +1,4 @@
-import { test, expect, Page } from '@playwright/test'
+import { expect, Page, test } from '@playwright/test'
 import Collection from '../src'
 
 class TodoPage extends Collection<Page> {
