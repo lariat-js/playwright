@@ -32,14 +32,12 @@
     "playwright-core": "^1.18.0-rc1"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
-    "@babel/eslint-parser": "^7.16.5",
     "@changesets/cli": "^2.19.0",
     "@playwright/test": "^1.18.0-rc1",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "eslint": "^8.7.0",
-    "eslint-config-widen": "^0.1.1",
+    "eslint-config-widen": "^0.2.0",
     "eslint-plugin-playwright": "^0.7.1",
     "eslint-plugin-sort": "^2.4.0",
     "eslint-plugin-widen": "^0.1.1",
