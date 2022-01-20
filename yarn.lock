@@ -2192,9 +2192,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-widen@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "eslint-config-widen@npm:0.2.0"
+"eslint-config-widen@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "eslint-config-widen@npm:0.2.1"
   dependencies:
     eslint-config-prettier: ^8.3.0
   peerDependencies:
@@ -2209,8 +2209,6 @@ __metadata:
     eslint-plugin-sort: ">= 2"
     eslint-plugin-widen: ">=0.1.0"
   peerDependenciesMeta:
-    "@babel/eslint-parser":
-      optional: true
     "@typescript-eslint/eslint-plugin":
       optional: true
     "@typescript-eslint/parser":
@@ -2223,7 +2221,7 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: 3e6286d547c7c90eabe961c70613452517ca3ce0ca4cd4e19a0864442c8c64a8f4d3d59b0a19f4d17470d9dff2ecc2193038672eb44cdb84fd96b3acad05e01d
+  checksum: 0830d079dae43d2d8369fea02182450f8312dcfbabc860b902ba831862bdb49729e58f6d933f1713fb677468940e2ad2af81b311cafca4f430abc971a7ccd978
   languageName: node
   linkType: hard
 
@@ -3286,7 +3284,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.10.0
     "@typescript-eslint/parser": ^5.10.0
     eslint: ^8.7.0
-    eslint-config-widen: ^0.2.0
+    eslint-config-widen: ^0.2.1
     eslint-plugin-playwright: ^0.7.1
     eslint-plugin-sort: ^2.4.0
     eslint-plugin-widen: ^0.1.1

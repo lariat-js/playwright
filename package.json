@@ -39,7 +39,7 @@
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.7.0",
-    "eslint-config-widen": "^0.2.0",
+    "eslint-config-widen": "^0.2.1",
     "eslint-plugin-playwright": "^0.7.1",
     "eslint-plugin-sort": "^2.4.0",
     "eslint-plugin-widen": "^0.1.1",
