@@ -37,4 +37,14 @@ test.describe('Elements', () => {
     const todoPage = new TodoPage(page)
     await expect(todoPage.button).toHaveText('Ho')
   })
+
+  test('locates elements that contain a locator', async ({ page }) => {
+    class TodoPage extends Collection<Page> {
+      button = this.el('button', { has: this.el('span') })
+    }
+
+    await page.setContent('<button><span>Hi</span></button><button>Ho</button>')
+    const todoPage = new TodoPage(page)
+    await expect(todoPage.button).toHaveText('Hi')
+  })
 })
