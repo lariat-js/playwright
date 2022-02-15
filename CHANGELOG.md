@@ -1,5 +1,12 @@
 # lariat
 
+## 1.3.0
+
+### Minor Changes
+
+- d44a0fd: Add `has` option to `Collection.el()` to filter by text using the
+  `has` locator option introduced in Playwright 1.19.
+
 ## 1.2.0
 
 ### Minor Changes
