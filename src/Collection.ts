@@ -2,7 +2,9 @@ import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
 import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
-export interface ElementOptions {
+type LocatorOptions = Required<Parameters<Page['locator']>>[1]
+
+export interface ElementOptions extends LocatorOptions {
   /**
    * When true, the locator will be based off the `frame`, rather than the
    * `root` thus escaping from any collection nesting. This is useful to
@@ -17,11 +19,6 @@ export interface ElementOptions {
    * inside of.
    */
   frame?: string
-  /**
-   * Matches elements containing specified text somewhere inside, possibly in a
-   * child or a descendant element.
-   */
-  hasText?: string | RegExp
 }
 
 export class Collection<T extends Handle = Locator> {
@@ -36,13 +33,13 @@ export class Collection<T extends Handle = Locator> {
    */
   protected el(
     selector: string,
-    { frame, hasText, portal }: ElementOptions = {}
+    { frame, portal, ...options }: ElementOptions = {}
   ): Locator {
     const root = portal ? this.frame : this.root
 
     return frame
-      ? root.frameLocator(frame).locator(selector, { hasText })
-      : root.locator(selector, { hasText })
+      ? root.frameLocator(frame).locator(selector, options)
+      : root.locator(selector, options)
   }
 
   /**

@@ -66,14 +66,14 @@ const todoPage = new TodoPage(page)
 await todoPage.saveButton.click()
 ```
 
-### Matching Text Content
+### `has` and `hasText`
 
-Elements can be matched by text content using the `hasText` option. This will
-only return elements that include the specified text or contain a child with the
-specified text.
+The `has` and `hasText` locator options can be passed to `Collection.el()` to
+match elements that contain a given locator or text.
 
 ```ts
 class TodoPage extends Collection<Page> {
+  buttonWithIcon = this.el('button', { has: this.el('svg') })
   saveButton = this.el('button', { hasText: 'Save' })
 }
 ```
