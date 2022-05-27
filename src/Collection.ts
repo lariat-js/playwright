@@ -6,6 +6,11 @@ type LocatorOptions = Required<Parameters<Page['locator']>>[1]
 
 export interface ElementOptions extends LocatorOptions {
   /**
+   * When defined, creates a frame locator which the element will be nested
+   * inside of.
+   */
+  frame?: string
+  /**
    * When true, the locator will be based off the `frame`, rather than the
    * `root` thus escaping from any collection nesting. This is useful to
    * represent a page structure whose visual appearance differs from it's
@@ -14,11 +19,6 @@ export interface ElementOptions extends LocatorOptions {
    * @default false
    */
   portal?: boolean
-  /**
-   * When defined, creates a frame locator which the element will be nested
-   * inside of.
-   */
-  frame?: string
 }
 
 export class Collection<T extends Handle = Locator> {
