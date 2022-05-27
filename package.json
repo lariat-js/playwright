@@ -29,21 +29,21 @@
     "release": "./scripts/release.sh"
   },
   "dependencies": {
-    "playwright-core": "^1.19.0"
+    "playwright-core": "^1.22.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.10",
-    "@babel/eslint-parser": "^7.16.5",
-    "@changesets/cli": "^2.19.0",
-    "@playwright/test": "^1.19.0",
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
-    "eslint": "^8.7.0",
-    "eslint-config-widen": "^0.2.1",
-    "eslint-plugin-playwright": "^0.7.1",
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
+    "@changesets/cli": "^2.22.0",
+    "@playwright/test": "^1.22.2",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "eslint-config-widen": "^0.6.2",
+    "eslint-plugin-playwright": "^0.9.0",
     "eslint-plugin-sort": "^2.4.0",
     "eslint-plugin-widen": "^0.1.1",
-    "prettier": "^2.5.1",
-    "typescript": "^4.5.4"
+    "prettier": "^2.6.2",
+    "typescript": "^4.7.2"
   }
 }
