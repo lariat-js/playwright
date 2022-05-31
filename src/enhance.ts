@@ -1,9 +1,9 @@
 import type { FrameLocator, Locator } from 'playwright-core'
 
 export type NestedCollection<T> = T & {
-  nth(index: number): T
   first(): T
   last(): T
+  nth(index: number): T
 }
 
 export function enhance<T>(
