@@ -2,16 +2,6 @@ import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
 import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
-type Method =
-  | 'locator'
-  | 'getByAltText'
-  | 'getByLabel'
-  | 'getByPlaceholder'
-  | 'getByRole'
-  | 'getByTestId'
-  | 'getByText'
-  | 'getByTitle'
-
 interface SelectorOptions {
   /**
    * When defined, creates a frame locator which the element will be nested
@@ -29,17 +19,31 @@ interface SelectorOptions {
   portal?: boolean
 }
 
-type MethodOptions<T extends Method> = Parameters<Page[T]>
-type ElementOptions = MethodOptions<'locator'>[1] & SelectorOptions
+type Method =
+  | 'locator'
+  | 'getByAltText'
+  | 'getByLabel'
+  | 'getByPlaceholder'
+  | 'getByRole'
+  | 'getByTestId'
+  | 'getByText'
+  | 'getByTitle'
+
+type Arg<T extends Method> = Parameters<Page[T]>[0]
+type Options<T extends Method> = Parameters<Page[T]>[1] & SelectorOptions
+
+interface EnhancedPageMethod<T extends Method> {
+  (arg: Arg<T>, options?: Options<T>): Locator
+}
 
 export class Collection<T extends Handle = Locator> {
-  protected getByAltText: Page['getByAltText']
-  protected getByLabel: Page['getByLabel']
-  protected getByPlaceholder: Page['getByPlaceholder']
-  protected getByRole: Page['getByRole']
-  protected getByTestId: Page['getByTestId']
-  protected getByText: Page['getByText']
-  protected getByTitle: Page['getByTitle']
+  protected getByAltText: EnhancedPageMethod<'getByAltText'>
+  protected getByLabel: EnhancedPageMethod<'getByLabel'>
+  protected getByPlaceholder: EnhancedPageMethod<'getByPlaceholder'>
+  protected getByRole: EnhancedPageMethod<'getByRole'>
+  protected getByTestId: EnhancedPageMethod<'getByTestId'>
+  protected getByText: EnhancedPageMethod<'getByText'>
+  protected getByTitle: EnhancedPageMethod<'getByTitle'>
 
   constructor(public root: T) {
     this.getByAltText = this.enhanceMethod('getByAltText')
@@ -60,7 +64,7 @@ export class Collection<T extends Handle = Locator> {
    */
   protected el(
     selector: string,
-    { frame, portal, ...options }: ElementOptions = {}
+    { frame, portal, ...options }: Options<'locator'> = {}
   ): Locator {
     return this.getParent(frame, portal).locator(selector, options)
   }
@@ -143,7 +147,7 @@ export class Collection<T extends Handle = Locator> {
   private enhanceMethod<T extends Method>(method: T): Page[T] {
     return (
       arg: Parameters<Page[T]>[0],
-      { frame, portal, ...options }: SelectorOptions & MethodOptions<T>[1] = {}
+      { frame, portal, ...options }: Options<T> = {}
     ) => {
       return this.getParent(frame, portal)[method](arg as any, options)
     }
