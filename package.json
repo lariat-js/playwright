@@ -29,13 +29,13 @@
     "release": "./scripts/release.sh"
   },
   "dependencies": {
-    "playwright-core": "^1.22.2"
+    "playwright-core": "^1.27.1"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/eslint-parser": "^7.19.1",
     "@changesets/cli": "^2.22.0",
-    "@playwright/test": "^1.22.2",
+    "@playwright/test": "^1.27.1",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "eslint": "^8.26.0",

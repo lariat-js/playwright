@@ -15,11 +15,13 @@ test.describe.parallel('Frame locators', () => {
   test('can access single elements in a frame', async ({ page }) => {
     class ExamplePage extends Collection<Page> {
       header = this.el('h1', { frame: '#my-frame' })
+      moreInfo = this.getByRole('link', { frame: '#my-frame' })
     }
 
     await page.setContent('<iframe src="https://example.com" id="my-frame">')
     const examplePage = new ExamplePage(page)
     await expect(examplePage.header).toHaveText('Example Domain')
+    await expect(examplePage.moreInfo).toHaveText('More information...')
   })
 
   test.describe('nested', () => {
