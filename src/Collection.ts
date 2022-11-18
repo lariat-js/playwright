@@ -145,11 +145,13 @@ export class Collection<T extends Handle = Locator> {
   }
 
   private enhanceMethod<T extends Method>(method: T): Page[T] {
-    return (
-      arg: Parameters<Page[T]>[0],
-      { frame, portal, ...options }: Options<T> = {}
+    const enhanced: EnhancedPageMethod<T> = (
+      arg,
+      { frame, portal, ...options } = {}
     ) => {
       return this.getParent(frame, portal)[method](arg as any, options)
     }
+
+    return enhanced
   }
 }
