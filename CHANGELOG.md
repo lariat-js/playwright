@@ -1,5 +1,11 @@
 # lariat
 
+## 1.4.1
+
+### Patch Changes
+
+- 295ad31: Fix option types for `getByTestId`
+
 ## 1.4.0
 
 ### Minor Changes
