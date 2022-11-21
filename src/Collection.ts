@@ -29,8 +29,19 @@ type Method =
   | 'getByText'
   | 'getByTitle'
 
+// Using an empty object `{}` as a type is typically a bad practice, but an
+// empty interface is fine.
+interface EmptyObject {}
+
+// Extract the first argument for a given page method. This can't just be
+// `string` since `getByRole` is more strict.
 type Arg<T extends Method> = Parameters<Page[T]>[0]
-type Options<T extends Method> = Parameters<Page[T]>[1] & SelectorOptions
+
+// Extract additional page objects if present and add the Lariat selector options
+type Options<T extends Method> = (Parameters<Page[T]>[1] extends undefined
+  ? EmptyObject
+  : Parameters<Page[T]>[1]) &
+  SelectorOptions
 
 interface EnhancedPageMethod<T extends Method> {
   (arg: Arg<T>, options?: Options<T>): Locator
