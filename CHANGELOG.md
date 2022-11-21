@@ -1,5 +1,11 @@
 # lariat
 
+## 1.4.0
+
+### Minor Changes
+
+- fe4006f: Add support for testing library methods such as `getByText`.
+
 ## 1.3.0
 
 ### Minor Changes
