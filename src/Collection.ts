@@ -2,9 +2,7 @@ import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
 import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
-type LocatorOptions = Required<Parameters<Page['locator']>>[1]
-
-export interface ElementOptions extends LocatorOptions {
+interface SelectorOptions {
   /**
    * When defined, creates a frame locator which the element will be nested
    * inside of.
@@ -21,8 +19,41 @@ export interface ElementOptions extends LocatorOptions {
   portal?: boolean
 }
 
+type Method =
+  | 'locator'
+  | 'getByAltText'
+  | 'getByLabel'
+  | 'getByPlaceholder'
+  | 'getByRole'
+  | 'getByTestId'
+  | 'getByText'
+  | 'getByTitle'
+
+type Arg<T extends Method> = Parameters<Page[T]>[0]
+type Options<T extends Method> = Parameters<Page[T]>[1] & SelectorOptions
+
+interface EnhancedPageMethod<T extends Method> {
+  (arg: Arg<T>, options?: Options<T>): Locator
+}
+
 export class Collection<T extends Handle = Locator> {
-  constructor(public root: T) {}
+  protected getByAltText: EnhancedPageMethod<'getByAltText'>
+  protected getByLabel: EnhancedPageMethod<'getByLabel'>
+  protected getByPlaceholder: EnhancedPageMethod<'getByPlaceholder'>
+  protected getByRole: EnhancedPageMethod<'getByRole'>
+  protected getByTestId: EnhancedPageMethod<'getByTestId'>
+  protected getByText: EnhancedPageMethod<'getByText'>
+  protected getByTitle: EnhancedPageMethod<'getByTitle'>
+
+  constructor(public root: T) {
+    this.getByAltText = this.enhanceMethod('getByAltText')
+    this.getByLabel = this.enhanceMethod('getByLabel')
+    this.getByPlaceholder = this.enhanceMethod('getByPlaceholder')
+    this.getByRole = this.enhanceMethod('getByRole')
+    this.getByTestId = this.enhanceMethod('getByTestId')
+    this.getByText = this.enhanceMethod('getByText')
+    this.getByTitle = this.enhanceMethod('getByTitle')
+  }
 
   /**
    * Retrieve a locator to a given element on the page identified by the
@@ -33,13 +64,9 @@ export class Collection<T extends Handle = Locator> {
    */
   protected el(
     selector: string,
-    { frame, portal, ...options }: ElementOptions = {}
+    { frame, portal, ...options }: Options<'locator'> = {}
   ): Locator {
-    const root = portal ? this.frame : this.root
-
-    return frame
-      ? root.frameLocator(frame).locator(selector, options)
-      : root.locator(selector, options)
+    return this.getParent(frame, portal).locator(selector, options)
   }
 
   /**
@@ -110,5 +137,21 @@ export class Collection<T extends Handle = Locator> {
    */
   public get page(): Page {
     return this.frame.page()
+  }
+
+  private getParent(frame: string | undefined, portal = false) {
+    const root = portal ? this.frame : this.root
+    return frame ? root.frameLocator(frame) : root
+  }
+
+  private enhanceMethod<T extends Method>(method: T): Page[T] {
+    const enhanced: EnhancedPageMethod<T> = (
+      arg,
+      { frame, portal, ...options } = {}
+    ) => {
+      return this.getParent(frame, portal)[method](arg as any, options)
+    }
+
+    return enhanced
   }
 }
