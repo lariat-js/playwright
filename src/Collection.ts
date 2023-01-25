@@ -1,8 +1,8 @@
-import type { Frame, FrameLocator, Locator, Page } from 'playwright-core'
+import type { Frame, FrameLocator, Locator, Page } from '@playwright/test'
 import { enhance, NestedCollection } from './enhance'
 import { Handle, isLocator } from './utils'
 
-interface SelectorOptions {
+export interface SelectorOptions {
   /**
    * When defined, creates a frame locator which the element will be nested
    * inside of.

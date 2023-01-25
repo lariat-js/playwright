@@ -1,4 +1,4 @@
-import type { FrameLocator, Locator } from 'playwright-core'
+import type { FrameLocator, Locator } from '@playwright/test'
 
 export type NestedCollection<T> = T & {
   first(): T
