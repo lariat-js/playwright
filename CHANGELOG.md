@@ -1,5 +1,13 @@
 # lariat
 
+## 1.5.0
+
+### Minor Changes
+
+- ead94a5: Update to use `@playwright/test` as a peer dependency. This should
+  resolve the problem when updating Playwright versions of also having to update
+  `playwright-core`.
+
 ## 1.4.1
 
 ### Patch Changes

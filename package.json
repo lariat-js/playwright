@@ -1,6 +1,6 @@
 {
   "name": "lariat",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Page object framework for end-to-end testing in Playwright.",
   "author": "Widen",
   "license": "ISC",
