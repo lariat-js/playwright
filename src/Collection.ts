@@ -1,6 +1,6 @@
 import type { Frame, FrameLocator, Locator, Page } from '@playwright/test'
-import { enhance, NestedCollection } from './enhance'
-import { Handle, isLocator } from './utils'
+import { enhance, NestedCollection } from './enhance.js'
+import { Handle, isLocator } from './utils.js'
 
 export interface SelectorOptions {
   /**

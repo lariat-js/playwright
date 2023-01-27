@@ -1,5 +1,5 @@
 import { expect, Page, test } from '@playwright/test'
-import Collection from '../src'
+import Collection from '../src/index.js'
 
 class TodoPage extends Collection<Page> {
   button = this.el('"Click me"')
