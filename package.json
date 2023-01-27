@@ -17,10 +17,12 @@
     "playwright",
     "playwright-test"
   ],
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
+  "type": "module",
+  "exports": {
+    "types": "./lib/index.d.ts",
+    "import": "./lib/index.js"
+  },
   "files": [
-    "src",
     "lib"
   ],
   "scripts": {
