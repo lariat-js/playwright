@@ -6,7 +6,7 @@ import {
   Page,
   test,
 } from '@playwright/test'
-import Collection from '../src'
+import Collection from '../src/index.js'
 
 class Child extends Collection<Page | Frame | Locator | FrameLocator> {
   input = this.el('input')

@@ -1,5 +1,5 @@
 import { expect, FrameLocator, Page, test } from '@playwright/test'
-import Collection from '../src'
+import Collection from '../src/index.js'
 
 test.describe.parallel('Frame locators', () => {
   test('accepts a frame locator as the root', async ({ page }) => {
