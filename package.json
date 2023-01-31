@@ -25,7 +25,7 @@
     "require": "./dist/index.cjs"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "lint": "eslint .",
