@@ -1,5 +1,11 @@
 # lariat
 
+## 2.0.1
+
+### Patch Changes
+
+- 70ae342: Fix missing `dist` directory in published package
+
 ## 2.0.0
 
 ### Major Changes
