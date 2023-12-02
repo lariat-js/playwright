@@ -1,23 +1,35 @@
-# Lariat
+# Lariat for Playwright
 
-[![Build](https://github.com/Widen/lariat/actions/workflows/build.yml/badge.svg)](https://github.com/Widen/lariat/actions/workflows/build.yml)
+[![Build](https://github.com/lariat-js/playwright/actions/workflows/build.yml/badge.svg)](https://github.com/lariat-js/playwright/actions/workflows/build.yml)
 [![npm](https://img.shields.io/npm/v/lariat)](https://www.npmjs.com/package/lariat)
 [![changesets](https://img.shields.io/badge/maintained%20with-changesets-blue)](https://github.com/atlassian/changesets)
 
-Page object framework for end-to-end testing in Playwright.
+Page object framework for [Playwright](https://playwright.dev).
 
 ## Installation
 
-### npm
+npm
 
 ```sh
 npm install lariat
 ```
 
-### Yarn
+Yarn
 
 ```sh
 yarn add lariat
+```
+
+pnpm
+
+```sh
+pnpm add lariat
+```
+
+Bun
+
+```sh
+bun add lariat
 ```
 
 ## Basic Usage
