@@ -45,14 +45,14 @@ test.describe.parallel('Frame locators', () => {
       await page.setContent(`
         <iframe src="https://example.com" class="my-frame"></iframe>
         <iframe src="https://playwright.dev" class="my-frame"></iframe>
-        <iframe src="https://overreacted.io" class="my-frame"></iframe>
+        <iframe src="https://react.dev/learn" class="my-frame"></iframe>
       `)
       const examplePage = new ExamplePage(page)
       const frame = examplePage.inner
 
       await expect(frame.first().header).toHaveText('Example Domain')
       await expect(frame.nth(1).header).toContainText('Playwright')
-      await expect(frame.last().header).toHaveText('Overreacted')
+      await expect(frame.last().header).toHaveText('Quick Start')
     })
   })
 })
