@@ -1,8 +1,7 @@
 # Lariat for Playwright
 
 [![Build](https://github.com/lariat-js/playwright/actions/workflows/build.yml/badge.svg)](https://github.com/lariat-js/playwright/actions/workflows/build.yml)
-[![npm](https://img.shields.io/npm/v/lariat)](https://www.npmjs.com/package/lariat)
-[![changesets](https://img.shields.io/badge/maintained%20with-changesets-blue)](https://github.com/atlassian/changesets)
+[![npm](https://img.shields.io/npm/v/@lariat/playwright)](https://www.npmjs.com/package/@lariat/playwright)
 
 Page object framework for [Playwright](https://playwright.dev).
 
@@ -11,25 +10,25 @@ Page object framework for [Playwright](https://playwright.dev).
 npm
 
 ```sh
-npm install lariat
+npm install @lariat/playwright
 ```
 
 Yarn
 
 ```sh
-yarn add lariat
+yarn add @lariat/playwright
 ```
 
 pnpm
 
 ```sh
-pnpm add lariat
+pnpm add @lariat/playwright
 ```
 
 Bun
 
 ```sh
-bun add lariat
+bun add @lariat/playwright
 ```
 
 ## Basic Usage
@@ -43,7 +42,7 @@ To create your own collections, simply create a class which extends the
 method which we will explore more in a moment.
 
 ```ts
-import Collection from 'lariat'
+import Collection from '@lariat/playwright'
 
 class TodoPage extends Collection<Page> {
   input = this.el('#todo-input')
