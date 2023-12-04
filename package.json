@@ -2,13 +2,13 @@
   "name": "lariat",
   "version": "2.0.1",
   "description": "Page object framework for end-to-end testing in Playwright.",
-  "author": "Widen",
+  "author": "Lariat Team",
   "license": "ISC",
   "packageManager": "yarn@3.2.1",
-  "repository": "github:Widen/lariat",
-  "homepage": "https://github.com/Widen/lariat#readme",
+  "repository": "github:lariat-js/playwright",
+  "homepage": "https://github.com/lariat-js/playwright#readme",
   "bugs": {
-    "url": "https://github.com/Widen/lariat/issues"
+    "url": "https://github.com/lariat-js/playwright/issues"
   },
   "keywords": [
     "lariat",
