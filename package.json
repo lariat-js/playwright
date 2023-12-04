@@ -1,7 +1,10 @@
 {
-  "name": "lariat",
-  "version": "2.0.1",
+  "name": "@lariat/playwright",
+  "version": "0.0.0-semantically-released",
   "description": "Page object framework for end-to-end testing in Playwright.",
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Lariat Team",
   "license": "ISC",
   "packageManager": "yarn@3.2.1",
@@ -39,7 +42,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "^7.19.1",
-    "@changesets/cli": "^2.26.0",
     "@playwright/test": "^1.30.0",
     "@typescript-eslint/eslint-plugin": "^5.49.0",
     "@typescript-eslint/parser": "^5.49.0",
@@ -49,6 +51,7 @@
     "eslint-plugin-sort": "^2.4.0",
     "eslint-plugin-widen": "^1.0.0",
     "prettier": "^2.8.3",
+    "semantic-release": "^22.0.8",
     "tsup": "^6.5.0",
     "typescript": "^4.9.4"
   }
