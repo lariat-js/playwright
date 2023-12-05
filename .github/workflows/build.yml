@@ -4,26 +4,21 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
-          cache: yarn
-      - run: yarn install --immutable
-      - run: yarn lint
-      - run: yarn prettier --check .
-      - run: yarn tsc --noEmit
+      - uses: mskelton/setup-yarn@v2
+      - name: Lint
+        run: yarn lint
+      - name: Check styling
+        run: yarn prettier --check .
+      - name: Type check
+        run: yarn tsc --noEmit
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
-          cache: yarn
-      - run: yarn install --immutable
-      - run: yarn playwright install chromium
-      - run: yarn test
+      - uses: mskelton/setup-yarn@v2
+      - name: Install Playwright deps
+        run: yarn playwright install chromium
+      - name: Test
+        run: yarn test
       - uses: actions/upload-artifact@v2
         if: ${{ always() }}
         with:
@@ -37,7 +32,7 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-      - uses: mskelton/setup-yarn@v1
+      - uses: mskelton/setup-yarn@v2
       - name: Build
         run: yarn build
       - name: Release
