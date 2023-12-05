@@ -7,7 +7,7 @@
   },
   "author": "Lariat Team",
   "license": "ISC",
-  "packageManager": "yarn@3.2.1",
+  "packageManager": "yarn@4.0.2",
   "repository": "github:lariat-js/playwright",
   "homepage": "https://github.com/lariat-js/playwright#readme",
   "bugs": {
